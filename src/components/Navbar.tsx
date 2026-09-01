@@ -34,11 +34,11 @@ export default function Navbar() {
           <img
             src="/images/ChatGPT_Image_Aug_26,_2026,_06_51_45_AM.png"
             alt="CLNCH logo"
-            className="h-12 w-12 object-contain"
+            className="h-14 w-14 object-contain"
           />
           <div className="leading-none">
-            <p className="text-base font-bold text-[#1a3a2a] tracking-wide">CLNCH</p>
-            <p className="text-[11px] text-[#5a8a6a] font-medium">From Found to Filed.</p>
+            <p className="text-lg font-bold text-[#1a3a2a] tracking-wide">CLNCH</p>
+            <p className="text-xs text-[#5a8a6a] font-medium">From Found to Filed.</p>
           </div>
         </a>
 
