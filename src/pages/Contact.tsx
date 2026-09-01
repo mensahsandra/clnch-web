@@ -79,7 +79,7 @@ export default function Contact() {
               <Mail size={20} className="text-white" />
             </div>
             <div>
-              <p className="text-sm font-bold text-[#1a3a2a]">Melissa S.</p>
+              <p className="text-sm font-bold text-[#1a3a2a]">Sandra Mensah</p>
               <p className="text-xs text-[#5a8a6a] mb-1">Coreaxis</p>
               <a
                 href={`mailto:${contactEmail}`}

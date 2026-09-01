@@ -67,15 +67,20 @@ export default function Footer() {
           <div>
             <p className="text-xs font-bold uppercase tracking-widest text-[#1a3a2a] mb-4">Connect</p>
             <div className="flex gap-3">
-              {["LinkedIn", "X"].map((icon) => (
-                <a
-                  key={icon}
-                  href="#"
-                  className="h-8 px-3 rounded-full border border-[#d8ead2] bg-white flex items-center justify-center text-xs text-[#4a6a55] hover:bg-[#e8f5ee] transition-colors cursor-pointer"
-                >
-                  {icon}
-                </a>
-              ))}
+              <a
+                href="#"
+                className="h-8 px-3 rounded-full border border-[#d8ead2] bg-white flex items-center justify-center text-xs text-[#4a6a55] hover:bg-[#e8f5ee] transition-colors cursor-pointer"
+              >
+                LinkedIn
+              </a>
+              <a
+                href="https://x.com/clnch_app"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="h-8 px-3 rounded-full border border-[#d8ead2] bg-white flex items-center justify-center text-xs text-[#4a6a55] hover:bg-[#e8f5ee] transition-colors cursor-pointer"
+              >
+                X
+              </a>
             </div>
           </div>
         </div>
