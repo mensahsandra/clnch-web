@@ -1,13 +1,29 @@
 import { useState } from "react";
 import { motion } from "motion/react";
+import { supabase } from "@/lib/supabase";
 
 export default function FinalCTA() {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email) return;
+    setError("");
+
+    const { error: insertError } = await supabase
+      .from("waitlist")
+      .insert({ email });
+
+    if (insertError) {
+      if (insertError.code === "23505") {
+        setSubmitted(true);
+        return;
+      }
+      setError("Something went wrong. Please try again.");
+      return;
+    }
     setSubmitted(true);
   };
 
@@ -81,6 +97,9 @@ export default function FinalCTA() {
               <p className="text-sm font-semibold text-[#2d6a4f]">You're on the waitlist!</p>
               <p className="text-xs text-[#5a8a6a]">We'll reach out when CLNCH is ready for you.</p>
             </div>
+          )}
+          {error && (
+            <p className="text-sm text-red-600 mb-4">{error}</p>
           )}
 
           <p className="mt-10 text-xs text-[#9ab0a0] font-medium tracking-wide">From Found to Filed.</p>

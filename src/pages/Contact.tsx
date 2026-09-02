@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion } from "motion/react";
 import { Mail, Send, Check } from "lucide-react";
+import { supabase } from "@/lib/supabase";
 
 const contactEmail = "mensahs@coreaxishq.tech";
 
@@ -20,10 +21,21 @@ export default function Contact() {
   const [intent, setIntent] = useState("");
   const [message, setMessage] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!name || !email || !message) return;
+    setError("");
+
+    const { error: insertError } = await supabase
+      .from("contact_submissions")
+      .insert({ name, email, intent: intent || null, message });
+
+    if (insertError) {
+      setError("Something went wrong. Please try again.");
+      return;
+    }
 
     const subject = encodeURIComponent(`[CLNCH Contact] ${intent || "General"} — ${name}`);
     const body = encodeURIComponent(
@@ -197,6 +209,9 @@ export default function Contact() {
               <p className="text-xs text-[#9ab0a0] pt-2">
                 We usually respond within 24–48 hours.
               </p>
+              {error && (
+                <p className="text-sm text-red-600">{error}</p>
+              )}
             </motion.form>
           )}
         </div>
