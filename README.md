@@ -1,4 +1,4 @@
-# Clnch Web
+# CLNCH Web
 
 **Clnch | Your AI Opportunity Assistant**
 
