@@ -6,7 +6,7 @@ The marketing website and product concept demo for **Clnch**, an AI opportunity 
 
 CLNCH sits between the complexity of the web and the person trying to navigate it: helping them find, understand, prepare for, and complete opportunities such as scholarships, jobs, fellowships, grants, accelerators, internships, and university programs.
 
-**Live:** https://clnchweb.vercel.app
+**Live:** https://clnch-web.vercel.app
 
 ---
 
