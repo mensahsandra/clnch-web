@@ -1,16 +1,16 @@
-# CLNCH Web
+# Clnch Web
 
-**CLNCH — Your AI Opportunity Assistant**
+**Clnch | Your AI Opportunity Assistant**
 
-The marketing website and product concept demo for **CLNCH**, an AI opportunity assistant designed to help people move from discovering an opportunity to actually pursuing it.
+The marketing website and product concept demo for **Clnch**, an AI opportunity assistant designed to help people move from discovering an opportunity to actually pursuing it.
 
-CLNCH sits between the complexity of the web and the person trying to navigate it — helping them find, understand, prepare for, and complete opportunities such as scholarships, jobs, fellowships, grants, accelerators, internships, and university programs.
+CLNCH sits between the complexity of the web and the person trying to navigate it: helping them find, understand, prepare for, and complete opportunities such as scholarships, jobs, fellowships, grants, accelerators, internships, and university programs.
 
 **Live:** https://clnchweb.vercel.app
 
 ---
 
-## What is CLNCH?
+## What is Clnch?
 
 Finding an opportunity is only the beginning.
 
@@ -27,7 +27,7 @@ The difficult part often comes afterward:
 - Completing repetitive parts of applications
 - Knowing what to do next
 
-**CLNCH is being built to stay with you through that process.**
+**Clnch is being built to stay with you through that process.**
 
 The core idea is:
 
@@ -53,7 +53,7 @@ The goal is to make sure **the process doesn't become the reason you never try.*
 
 This repository contains the **CLNCH marketing website, waitlist experience, and product concept**.
 
-It is **not the functional CLNCH product**. The underlying product is still in development.
+It is **not the functional Clnch product**. The underlying product is still in development.
 
 The website communicates the product vision through a combination of:
 
@@ -67,11 +67,11 @@ The website communicates the product vision through a combination of:
 
 The site currently includes:
 
-- **Landing page** — Overview of CLNCH and the product vision
-- **Product concepts** — Explorations of how CLNCH could assist users throughout the opportunity journey
-- **The CLNCH Log** — Field notes documenting research, experiments, decisions, and product development
-- **About** — The thinking and philosophy behind CLNCH
-- **Contact** — Contact form for questions, feedback, and early interest
+- **Landing page**: Overview of CLNCH and the product vision
+- **Product concepts**: Explorations of how CLNCH could assist users throughout the opportunity journey
+- **The CLNCH Log**: Field notes documenting research, experiments, decisions, and product development
+- **About**: The thinking and philosophy behind CLNCH
+- **Contact**: Contact form for questions, feedback, and early interest
 - **Privacy Policy**
 - **Terms of Service**
 - **Waitlist / early access** experience
@@ -113,7 +113,7 @@ The goal is to turn messy opportunity pages into information that is easier to a
 
 ### Personal Fit
 
-CLNCH can use a user's opportunity profile — including education, experience, skills, interests, goals, location, and career direction — to help answer:
+CLNCH can use a user's opportunity profile, including: education, experience, skills, interests, goals, location, and career direction — to help answer:
 
 **"Is this actually relevant to me?"**
 
@@ -173,7 +173,7 @@ to:
 
 **"I submitted it."**
 
-CLNCH doesn't decide whether someone will succeed.
+Clnch doesn't decide whether someone will succeed.
 
 It helps them **take the shot.**
 
