@@ -42,58 +42,6 @@ The site includes:
    cd clnch-web
    ```
 
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-3. Set up environment variables:
-   ```bash
-   cp .env.example .env.local
-   ```
-   Then edit `.env.local` and add your Supabase credentials:
-   ```
-   VITE_SUPABASE_URL=your_supabase_url
-   VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
-   ```
-
-   **Note:** The site works without Supabase configured. If you don't set these variables, the contact form will skip the database insert but will still show a success message.
-
-### Development
-
-Start the development server:
-```bash
-npm run dev
-```
-
-The site will be available at `http://localhost:5173`
-
-### Building
-
-Build for production:
-```bash
-npm run build
-```
-
-Preview the production build locally:
-```bash
-npm run preview
-```
-
-### Type Checking
-
-Run TypeScript checks:
-```bash
-npm run typecheck
-```
-
-### Linting
-
-Run ESLint:
-```bash
-npm run lint
-```
-
 ## Project Structure
 
 ```
@@ -105,33 +53,10 @@ src/
 ├── main.tsx            # React entry point
 └── index.css           # Global styles (Tailwind)
 ```
-
-## Supabase Setup (Optional)
-
-If you want to enable the contact form to save submissions to a database:
-
-1. Create a Supabase project at https://supabase.com
-2. Create a table called `contact_submissions` with columns:
-   - `id` (primary key, auto-increment)
-   - `name` (text)
-   - `email` (text)
-   - `intent` (text, nullable)
-   - `message` (text)
-   - `created_at` (timestamp, default: now())
-
-3. Enable Row-Level Security (RLS) on the table and create a policy allowing unauthenticated inserts:
-   ```sql
-   CREATE POLICY "Allow public to insert" ON contact_submissions
-   FOR INSERT WITH CHECK (true);
-   ```
-
-4. Get your Supabase URL and anon key from the project settings
-5. Add them to `.env.local`
-
 ## How This Was Built
 
 This project was built with **AI-assisted development** using:
-- **Cursor** and **Bolt** for code generation
+- **Bolt** for code generation
 - **Claude** for architectural guidance
 - **GitHub Copilot** for inline suggestions
 
@@ -166,15 +91,6 @@ Feedback and contributions welcome! If you notice issues or have suggestions:
 2. Fork and create a feature branch if contributing code
 3. Make your changes and test locally
 4. Submit a pull request
-
-## Security
-
-- Supabase credentials are stored as environment variables (never committed)
-- The anon key is publicly visible by design (Supabase pattern)
-- Row-Level Security (RLS) policies protect the database
-- Contact form includes error handling and validation
-
-**Supabase Security Note:** Ensure RLS is enabled and policies are restrictive. Only authenticated users or specific conditions should have access to data.
 
 ## Deployment
 
