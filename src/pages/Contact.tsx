@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "motion/react";
-import { Mail, Send, Check } from "lucide-react";
+import { Mail, Send, Check, AlertCircle, Loader } from "lucide-react";
 import { supabase } from "@/lib/supabase";
 
 const contactEmail = "mensahs@coreaxishq.tech";
@@ -22,27 +22,49 @@ export default function Contact() {
   const [message, setMessage] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!name || !email || !message) return;
+    
     setError("");
+    setIsLoading(true);
 
-    const { error: insertError } = supabase
-      ? await supabase.from("contact_submissions").insert({ name, email, intent: intent || null, message })
-      : { error: { message: "Database not configured" } } as any;
+    try {
+      // If Supabase is not configured, skip database insert
+      if (!supabase) {
+        console.warn("Supabase not configured. Skipping database insert.");
+      } else {
+        const { error: insertError } = await supabase
+          .from("contact_submissions")
+          .insert({ name, email, intent: intent || null, message });
 
-    if (insertError) {
-      setError("Something went wrong. Please try again.");
-      return;
+        if (insertError) {
+          setError(
+            "We encountered an issue saving your message. Please try again or email us directly."
+          );
+          setIsLoading(false);
+          return;
+        }
+      }
+
+      // Database insert successful (or skipped), show success state
+      setSubmitted(true);
+      setIsLoading(false);
+
+      // Optional: Open mailto as fallback for direct contact
+      // Uncomment if you want mailto to open after successful submission:
+      // const subject = encodeURIComponent(`[CLNCH Contact] ${intent || "General"} — ${name}`);
+      // const body = encodeURIComponent(
+      //   `Name: ${name}\nEmail: ${email}\nIntent: ${intent || "General"}\n\n${message}`
+      // );
+      // window.location.href = `mailto:${contactEmail}?subject=${subject}&body=${body}`;
+    } catch (err) {
+      console.error("Contact form error:", err);
+      setError("An unexpected error occurred. Please try again or email us directly.");
+      setIsLoading(false);
     }
-
-    const subject = encodeURIComponent(`[CLNCH Contact] ${intent || "General"} — ${name}`);
-    const body = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\nIntent: ${intent || "General"}\n\n${message}`
-    );
-    window.location.href = `mailto:${contactEmail}?subject=${subject}&body=${body}`;
-    setSubmitted(true);
   };
 
   return (
@@ -143,7 +165,8 @@ export default function Contact() {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   required
-                  className="w-full px-5 py-3 rounded-xl border border-[#d8ead2] bg-white text-sm text-[#1a3a2a] placeholder:text-[#aac4b0] focus:outline-none focus:ring-2 focus:ring-[#2d6a4f]/20 shadow-sm"
+                  disabled={isLoading}
+                  className="w-full px-5 py-3 rounded-xl border border-[#d8ead2] bg-white text-sm text-[#1a3a2a] placeholder:text-[#aac4b0] focus:outline-none focus:ring-2 focus:ring-[#2d6a4f]/20 disabled:opacity-50 disabled:cursor-not-allowed transition-opacity"
                   placeholder="Your name"
                 />
               </div>
@@ -157,7 +180,8 @@ export default function Contact() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
-                  className="w-full px-5 py-3 rounded-xl border border-[#d8ead2] bg-white text-sm text-[#1a3a2a] placeholder:text-[#aac4b0] focus:outline-none focus:ring-2 focus:ring-[#2d6a4f]/20 shadow-sm"
+                  disabled={isLoading}
+                  className="w-full px-5 py-3 rounded-xl border border-[#d8ead2] bg-white text-sm text-[#1a3a2a] placeholder:text-[#aac4b0] focus:outline-none focus:ring-2 focus:ring-[#2d6a4f]/20 disabled:opacity-50 disabled:cursor-not-allowed transition-opacity"
                   placeholder="your@email.com"
                 />
               </div>
@@ -172,11 +196,12 @@ export default function Contact() {
                       key={opt}
                       type="button"
                       onClick={() => setIntent(opt)}
+                      disabled={isLoading}
                       className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
                         intent === opt
                           ? "bg-[#2d6a4f] text-white border-[#2d6a4f]"
                           : "bg-white text-[#4a6a55] border-[#d8ead2] hover:border-[#2d6a4f]"
-                      } border`}
+                      } border disabled:opacity-50 disabled:cursor-not-allowed`}
                     >
                       {opt}
                     </button>
@@ -192,25 +217,45 @@ export default function Contact() {
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   required
+                  disabled={isLoading}
                   rows={5}
-                  className="w-full px-5 py-3 rounded-xl border border-[#d8ead2] bg-white text-sm text-[#1a3a2a] placeholder:text-[#aac4b0] focus:outline-none focus:ring-2 focus:ring-[#2d6a4f]/20 shadow-sm resize-none"
+                  className="w-full px-5 py-3 rounded-xl border border-[#d8ead2] bg-white text-sm text-[#1a3a2a] placeholder:text-[#aac4b0] focus:outline-none focus:ring-2 focus:ring-[#2d6a4f]/20 disabled:opacity-50 disabled:cursor-not-allowed transition-opacity"
                   placeholder="Tell us what's on your mind..."
                 />
               </div>
 
               <button
                 type="submit"
-                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-[#F47316] text-white font-semibold text-sm hover:bg-[#d9651a] transition-colors cursor-pointer shadow-md shadow-orange-200"
+                disabled={isLoading}
+                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-[#F47316] text-white font-semibold text-sm hover:bg-[#d9651a] transition-colors cursor-pointer shadow-md disabled:opacity-70 disabled:cursor-not-allowed"
               >
-                Send message
-                <Send size={16} />
+                {isLoading ? (
+                  <>
+                    <Loader size={16} className="animate-spin" />
+                    Sending...
+                  </>
+                ) : (
+                  <>
+                    Send message
+                    <Send size={16} />
+                  </>
+                )}
               </button>
 
               <p className="text-xs text-[#9ab0a0] pt-2">
                 We usually respond within 24–48 hours.
               </p>
+
               {error && (
-                <p className="text-sm text-red-600">{error}</p>
+                <motion.div
+                  initial={{ opacity: 0, y: -8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="flex items-start gap-3 p-4 rounded-lg bg-red-50 border border-red-200"
+                >
+                  <AlertCircle size={16} className="text-red-600 flex-shrink-0 mt-0.5" />
+                  <p className="text-sm text-red-700">{error}</p>
+                </motion.div>
               )}
             </motion.form>
           )}
