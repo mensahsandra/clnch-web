@@ -12,9 +12,9 @@ export default function FinalCTA() {
     if (!email) return;
     setError("");
 
-    const { error: insertError } = await supabase
-      .from("waitlist")
-      .insert({ email });
+    const { error: insertError } = supabase
+      ? await supabase.from("waitlist").insert({ email })
+      : { error: { message: "Database not configured" } } as any;
 
     if (insertError) {
       if (insertError.code === "23505") {

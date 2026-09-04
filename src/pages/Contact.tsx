@@ -28,9 +28,9 @@ export default function Contact() {
     if (!name || !email || !message) return;
     setError("");
 
-    const { error: insertError } = await supabase
-      .from("contact_submissions")
-      .insert({ name, email, intent: intent || null, message });
+    const { error: insertError } = supabase
+      ? await supabase.from("contact_submissions").insert({ name, email, intent: intent || null, message })
+      : { error: { message: "Database not configured" } } as any;
 
     if (insertError) {
       setError("Something went wrong. Please try again.");
