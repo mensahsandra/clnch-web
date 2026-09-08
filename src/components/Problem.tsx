@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { ArrowRight, Globe2, Sparkles, UserRound } from "lucide-react";
+import { ArrowRight, Globe2, Send, UserRound } from "lucide-react";
 
 const obstacles = [
   "five tabs for one task",
@@ -69,7 +69,7 @@ export default function Problem() {
             </div>
             <ArrowRight size={20} className="text-[#b8d4bc] rotate-90 sm:rotate-0" />
             <div className="w-full sm:w-48 rounded-2xl border-2 border-[#2d6a4f] bg-[#2d6a4f] p-5 text-center shadow-lg">
-              <Sparkles size={22} className="text-[#a8d4b8] mx-auto mb-3" />
+              <Send size={22} className="text-[#a8d4b8] mx-auto mb-3" />
               <p className="text-xs font-bold uppercase tracking-widest text-[#a8d4b8] mb-1">CLNCH</p>
               <p className="text-sm font-semibold text-white">The layer in the middle</p>
             </div>
