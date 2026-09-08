@@ -16,11 +16,11 @@ export default function Footer() {
               />
               <div className="leading-none">
                 <p className="text-sm font-bold text-[#1a3a2a] tracking-wide">CLNCH</p>
-                <p className="text-[10px] text-[#5a8a6a] font-medium">From Found to Filed.</p>
+                <p className="text-[10px] text-[#5a8a6a] font-medium">The layer between you and the web.</p>
               </div>
             </div>
             <p className="text-xs text-[#7a9a85] leading-relaxed max-w-[200px]">
-              An AI opportunity assistant that helps you move from discovery to completion.
+              An AI assistant between you and the complexity of the web, helping you get things done.
             </p>
           </div>
 
@@ -31,7 +31,7 @@ export default function Footer() {
                 { label: "How it works", href: "/#how-it-works" },
                 { label: "CLNCH Lens", href: "/#clnch-lens" },
                 { label: "Opportunity Watch", href: "/#opportunity-watch" },
-                { label: "Roadmap", href: "/#vision" },
+                { label: "Vision", href: "/#vision" },
               ].map((l) => (
                 <a key={l.label} href={l.href} className="block text-xs text-[#5a8a6a] hover:text-[#1a3a2a] transition-colors cursor-pointer">
                   {l.label}

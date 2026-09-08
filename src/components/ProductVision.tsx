@@ -28,7 +28,7 @@ export default function ProductVision() {
         >
           <p className="text-xs font-semibold tracking-[0.15em] uppercase text-[#a8c8b0] mb-4">Product vision</p>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white leading-tight mb-10">
-            CLNCH is becoming your opportunity assistant.
+            CLNCH is becoming the layer between you and the web.
           </h2>
         </motion.div>
 
@@ -74,7 +74,7 @@ export default function ProductVision() {
           transition={{ duration: 0.5, delay: 0.7 }}
           className="text-lg text-[#a8d4b8] font-bold leading-relaxed max-w-xl mx-auto"
         >
-          It's to remove the friction between you and the opportunity.
+          It's to remove the friction between you and what you're trying to do.
         </motion.p>
       </div>
     </section>

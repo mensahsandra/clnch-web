@@ -22,7 +22,7 @@ export default function FinalPhilosophy() {
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight tracking-tight mb-12"
         >
-          You can't know if you'll get it<br />until you try.
+          Don't lose momentum<br />to a complicated process.
         </motion.h2>
 
         <div className="space-y-4 mb-12">
@@ -51,7 +51,7 @@ export default function FinalPhilosophy() {
           transition={{ duration: 0.5, delay: 0.6, ease: "easeOut" }}
           className="text-white font-bold text-lg leading-relaxed max-w-lg mx-auto mb-6"
         >
-          But you shouldn't lose an opportunity because the process was too complicated to navigate.
+          CLNCH is here to help you understand what matters, prepare what you need, and keep moving.
         </motion.p>
 
         <motion.p
@@ -61,7 +61,7 @@ export default function FinalPhilosophy() {
           transition={{ duration: 0.5, delay: 0.75 }}
           className="text-[#a8d4b8] bg-[#2d6a4f]/30 inline-block px-5 py-2 rounded-full font-semibold text-sm"
         >
-          CLNCH helps close that gap.
+          Don't just find it. Finish it.
         </motion.p>
       </div>
     </section>

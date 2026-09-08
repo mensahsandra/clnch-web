@@ -28,7 +28,7 @@ export default function OpportunityCategories() {
   return (
     <section className="relative overflow-hidden border-y border-[#e8e4d8] bg-[#f0f7f2] py-7">
       <div className="mx-auto mb-4 max-w-6xl px-6 text-center">
-        <p className="text-xs font-semibold uppercase tracking-[0.15em] text-[#7a9a85]">Whatever you're looking for, CLNCH stays with you.</p>
+        <p className="text-xs font-semibold uppercase tracking-[0.15em] text-[#7a9a85]">Start with an opportunity. CLNCH stays with you through the process.</p>
       </div>
       <div className="overflow-hidden">
         <motion.div

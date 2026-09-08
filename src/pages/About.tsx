@@ -53,7 +53,7 @@ export default function About() {
             transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
             className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.1] tracking-tight text-[#1a3a2a] mb-8"
           >
-            The opportunity isn't always the hard part.
+            The web is powerful.
           </motion.h1>
           <motion.h1
             initial={{ opacity: 0, y: 12 }}
@@ -61,7 +61,7 @@ export default function About() {
             transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
             className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.1] tracking-tight text-[#2d6a4f] mb-12"
           >
-            Sometimes, it's everything that comes after.
+            CLNCH helps you move through it.
           </motion.h1>
 
           <motion.div
@@ -71,6 +71,7 @@ export default function About() {
             className="space-y-5 text-lg text-[#4a6a55] leading-relaxed"
           >
             <p>CLNCH was born from a simple frustration:</p>
+            <p>The web asks people to do too much piecing together.</p>
             <p>You find something worth pursuing.</p>
             <p>Then the tabs multiply.</p>
             <p>The requirements get confusing.</p>
@@ -115,9 +116,9 @@ export default function About() {
             transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
             className="space-y-5 text-lg text-[#a8c8b0] leading-relaxed"
           >
-            <p>An AI opportunity assistant that stays beside you.</p>
+            <p>An AI assistant that sits between you and the complexity of the web.</p>
             <p>
-              CLNCH helps you investigate an opportunity, understand what it requires, see whether it fits you, prepare what you need, and work through the application.
+              CLNCH helps you get things done without switching between tabs, tools, or apps. We started with opportunities because finding something worth pursuing is only the beginning.
             </p>
             <p className="text-white font-bold text-xl pt-2">Not instead of you.</p>
             <p className="text-white font-bold text-xl">With you.</p>

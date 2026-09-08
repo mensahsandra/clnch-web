@@ -1,6 +1,7 @@
 import Hero from "../components/Hero";
 import OpportunityCategories from "../components/OpportunityCategories";
 import Problem from "../components/Problem";
+import OpportunityWedge from "../components/OpportunityWedge";
 import Philosophy from "../components/Philosophy";
 import CoreJourney from "../components/CoreJourney";
 import ClnchLens from "../components/ClnchLens";
@@ -21,6 +22,7 @@ export default function Home() {
       <Hero />
       <OpportunityCategories />
       <Problem />
+      <OpportunityWedge />
       <Philosophy />
       <CoreJourney />
       <ClnchLens />

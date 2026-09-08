@@ -1,6 +1,6 @@
 import { motion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
-import { Bookmark, Search, Target, ClipboardList, Send } from "lucide-react";
+import { Bookmark, Search, ClipboardList, Send } from "lucide-react";
 
 const stages = [
   {
@@ -23,15 +23,6 @@ const stages = [
   },
   {
     n: "03",
-    key: "DECIDE",
-    icon: Target,
-    title: "Decide",
-    body: "Is this actually relevant to me?",
-    detail: "CLNCH compares the opportunity against your profile, goals and requirements. It explains why it fits, why it might not, what's missing, and what needs verification. The goal is not an impressive AI score. The goal is a better decision.",
-    dark: false,
-  },
-  {
-    n: "04",
     key: "PREPARE",
     icon: ClipboardList,
     title: "Prepare",
@@ -40,11 +31,11 @@ const stages = [
     dark: false,
   },
   {
-    n: "05",
+    n: "04",
     key: "COMPLETE",
     icon: Send,
     title: "Complete",
-    body: "CLNCH stays beside you while you apply.",
+    body: "CLNCH stays beside you while you move through the process.",
     detail: '"What does this question mean?" "Help me answer this." "Where did I put that information?" "Read this page for me." CLNCH can explain, retrieve, draft, organize, copy and paste, and eventually assist with form filling. For consequential actions, CLNCH asks for approval. The human remains in control.',
     dark: true,
   },
@@ -67,16 +58,16 @@ export default function CoreJourney() {
         >
           <p className="text-xs font-semibold tracking-[0.15em] uppercase text-[#7a9a85] mb-3">The core journey</p>
           <h2 className="text-4xl sm:text-5xl font-extrabold text-[#1a3a2a] tracking-tight leading-tight mb-3">
-            Find it.
+            Find.
           </h2>
           <h2 className="text-4xl sm:text-5xl font-extrabold text-[#2d6a4f] tracking-tight leading-tight mb-3">
-            CLNCH it.
+            Understand.
           </h2>
           <h2 className="text-4xl sm:text-5xl font-extrabold text-[#1a3a2a] tracking-tight leading-tight">
-            Finish it.
+            Prepare. Complete.
           </h2>
           <p className="text-sm text-[#4a6a55] mt-6 max-w-md mx-auto leading-relaxed">
-            From the moment you discover an opportunity to the moment you submit it, CLNCH stays beside you.
+            Find. Understand. Prepare. Complete. CLNCH stays with you across the process.
           </p>
         </motion.div>
 
@@ -124,7 +115,7 @@ export default function CoreJourney() {
           className="mt-10 text-center"
         >
           <div className="inline-flex items-center gap-2 bg-[#f0f7f2] text-[#2d6a4f] text-xs font-semibold px-5 py-2.5 rounded-full border border-[#c8ddd0]">
-            The opportunity is yours to pursue. The process is ours to make easier.
+            You stay in control. CLNCH makes the process easier.
           </div>
         </motion.div>
       </div>

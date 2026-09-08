@@ -20,13 +20,21 @@ export default function Hero() {
       <div className="max-w-6xl mx-auto relative">
         <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-12 items-center">
           <div>
+            <motion.p
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.05, ease: "easeOut" }}
+              className="text-xs font-semibold tracking-[0.15em] uppercase text-[#7a9a85] mb-5"
+            >
+              The AI assistant between you and the web
+            </motion.p>
             <motion.h1
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
               className="text-4xl sm:text-5xl lg:text-[3.5rem] font-extrabold leading-[1.08] tracking-tight text-[#1a3a2a] mb-3"
             >
-              You found it.
+              Get things done
             </motion.h1>
             <motion.h1
               initial={{ opacity: 0, y: 12 }}
@@ -34,16 +42,24 @@ export default function Hero() {
               transition={{ duration: 0.6, delay: 0.23, ease: "easeOut" }}
               className="text-4xl sm:text-5xl lg:text-[3.5rem] font-extrabold leading-[1.08] tracking-tight text-[#2d6a4f] mb-7"
             >
-              Now CLNCH it.
+              without switching between tabs, tools, or apps.
             </motion.h1>
 
             <motion.p
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.31, ease: "easeOut" }}
-              className="text-base text-[#4a6a55] leading-relaxed max-w-md mb-8"
+              className="text-base text-[#4a6a55] leading-relaxed max-w-md mb-3"
             >
-              CLNCH helps you understand opportunities, figure out whether they're right for you, and move through the work of actually applying.
+              CLNCH sits in the middle. It understands what you're trying to do and helps you move through the web without piecing the process together yourself.
+            </motion.p>
+            <motion.p
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.36, ease: "easeOut" }}
+              className="text-sm text-[#5a8a6a] leading-relaxed max-w-md mb-8"
+            >
+              From finding an opportunity to understanding it, preparing for it, and completing it — CLNCH stays with you through the process.
             </motion.p>
 
             <motion.div

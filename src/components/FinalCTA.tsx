@@ -62,17 +62,17 @@ export default function FinalCTA() {
           </div>
 
           <h2 className="text-4xl sm:text-5xl font-extrabold text-[#1a3a2a] leading-tight tracking-tight mb-3">
-            You found it.
+            Ready to move through the web differently?
           </h2>
           <h2 className="text-4xl sm:text-5xl font-extrabold text-[#2d6a4f] leading-tight tracking-tight mb-6">
-            CLNCH it.
+            CLNCH the process.
           </h2>
 
           <p className="text-base text-[#4a6a55] mb-2 max-w-md mx-auto leading-relaxed">
-            The opportunity is yours to pursue.
+            Join the waitlist for an AI assistant that stays with you across the web.
           </p>
           <p className="text-base text-[#4a6a55] mb-10 max-w-md mx-auto leading-relaxed">
-            The process is ours to make easier.
+            Start with opportunities. Build toward everything else.
           </p>
 
           {!submitted ? (

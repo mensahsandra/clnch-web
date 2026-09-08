@@ -40,7 +40,7 @@ export default function Navbar() {
           />
           <div className="leading-none">
             <p className="text-lg font-bold text-[#1a3a2a] tracking-wide">CLNCH</p>
-            <p className="text-xs text-[#5a8a6a] font-medium">From Found to Filed.</p>
+            <p className="text-xs text-[#5a8a6a] font-medium">The layer between you and the web.</p>
           </div>
         </Link>
 
