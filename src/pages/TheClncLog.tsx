@@ -1,268 +1,158 @@
-import { useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
-import { ArrowLeft, ArrowRight } from "lucide-react";
-
-interface LogEntry {
-  id: string;
-  number: string;
-  category: string;
-  categoryColor: string;
-  title: string;
-  excerpt: string;
-  date: string;
-  body: string[];
-}
-
-const buildLog = [
-  { date: "2026-11-12", items: ["Agent architecture audit", "Context infrastructure review", "Research roadmap update"] },
-  { date: "2026-11-10", items: ["Redesigned Connector Hub", "Added custom connector support", "Added MCP support (SSE & Stdio)", "Composio v3 migration", "Gemini extraction reliability improvements", "AI fallback pipeline", "Opportunity extraction hardening"] },
-  { date: "2026-11-04", items: ["Connected GitHub"] },
-  { date: "2026-11-02", items: ["Connected Gmail"] },
-];
-
-const entries: LogEntry[] = [
-  {
-    id: "sidebar",
-    number: "01",
-    category: "BUILDING",
-    categoryColor: "#2d6a4f",
-    title: "We gave CLNCH a sidebar.",    excerpt:
-      "A small experiment in putting an AI opportunity assistant beside the web.",
-    date: "September 2026",
-    body: [
-      "The first version of CLNCH lived in a tab. You'd find an opportunity, copy the link, paste it in, and wait.",
-      "That worked. But it didn't feel like having an assistant beside you. It felt like using a tool.",
-      "So we built a sidebar. Something that sits next to the page you're already on, reads what you're looking at, and helps you think through it — without making you switch contexts.",
-      "The sidebar is early. It can summarize a page, pull out requirements, and flag deadlines. What it can't do yet is work through an application with you. That's next.",
-    ],
-  },
-  {
-    id: "abandon",
-    number: "02",
-    category: "FIELD NOTE",
-    categoryColor: "#F47316",
-    title: "Finding the opportunity isn't the hard part.",
-    excerpt:
-      "Why people abandon opportunities after finding them — and what it tells us about what CLNCH needs to be.",
-    date: "August 2026",
-    body: [
-      "We talked to people who find opportunities all the time. Jobs, scholarships, grants, fellowships. They're good at finding them.",
-      "But between finding and applying, something happens. The tabs multiply. The requirements get confusing. The deadline gets buried. The application asks questions they don't know how to answer.",
-      "And they give up. Not because they don't want it. Because the process is too complicated to navigate.",
-      "That's the gap CLNCH is built to close. Not the finding — people can find things. The everything after.",
-    ],
-  },
-  {
-    id: "reads-application",
-    number: "03",
-    category: "EXPERIMENT",
-    categoryColor: "#1a3a2a",
-    title: "What happens when CLNCH reads the application before you?",
-    excerpt:
-      "An experiment in letting AI parse application forms before a human touches them.",
-    date: "August 2026",
-    body: [
-      "Most application forms are designed for people who already know what they're doing. They assume you understand the requirements, have your documents ready, and can answer every question confidently.",
-      "We wanted to see what happens if CLNCH reads the form first — breaks down what's being asked, identifies what you'll need, and flags questions that might trip you up.",
-      "The results were promising. People who used the pre-read completed applications faster and abandoned less often. They also reported feeling less overwhelmed.",
-      "This is still an experiment. But it's pointing toward something: the most useful thing CLNCH can do might not be finding opportunities. It might be making them feel possible.",
-    ],
-  },
-];
+import { motion } from "motion/react";
+import { TimelineSection } from "@/components/log/Timeline";
+import ActivityStream from "@/components/log/ActivityStream";
+import ResearchQuestions from "@/components/log/ResearchQuestions";
+import Roadmap from "@/components/log/Roadmap";
 
 export default function TheClncLog() {
-  const [selected, setSelected] = useState<LogEntry | null>(null);
-
   return (
-    <div className="pt-28">
-      {/* Hero */}
-      <section className="px-6 py-20 bg-[#faf9f5]">
-        <div className="max-w-3xl mx-auto">
+    <div className="pt-28 bg-white">
+      {/* Header */}
+      <section className="relative px-6 pt-16 pb-20 overflow-hidden">
+        {/* subtle grid texture */}
+        <div
+          className="absolute inset-0 pointer-events-none opacity-[0.35]"
+          style={{
+            backgroundImage:
+              "linear-gradient(to right, rgba(15,23,42,0.045) 1px, transparent 1px), linear-gradient(to bottom, rgba(15,23,42,0.045) 1px, transparent 1px)",
+            backgroundSize: "56px 56px",
+            maskImage: "radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%)",
+            WebkitMaskImage: "radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%)",
+          }}
+        />
+        <div className="max-w-3xl mx-auto relative">
           <motion.p
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
-            className="text-sm font-semibold text-[#F47316] uppercase tracking-widest mb-6"
+            className="text-sm font-semibold text-teal-600 uppercase tracking-[0.2em] mb-6"
           >
-            The CLNCH Log
+            Research Log
           </motion.p>
           <motion.h1
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
-            className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.1] tracking-tight text-[#1a3a2a] mb-8"
+            className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.08] tracking-tight text-slate-900 mb-4"
           >
-            What CLNCH is building, thinking about, and learning.
+            Questions in Motion
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-            className="text-lg text-[#4a6a55] leading-relaxed"
+            className="text-lg text-slate-500 leading-relaxed max-w-2xl"
           >
-            Field notes, experiments, and a build log from the work in progress. This is a living lab — everything here ships from the same codebase you'll use.
+            Building in public. Researching in motion.
           </motion.p>
-        </div>
-      </section>
-
-      {/* Build log */}
-      <section className="px-6 pb-4 bg-[#faf9f5]">
-        <div className="max-w-3xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 14 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
-            className="rounded-2xl border border-[#d8ead2] bg-white p-6 sm:p-8 shadow-sm"
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+            className="text-base text-slate-600 leading-relaxed max-w-2xl mt-5"
           >
-            <p className="text-xs font-bold uppercase tracking-widest text-[#2d6a4f] mb-6">Build log</p>
-            <div className="space-y-6">
-              {buildLog.map((day) => (
-                <div key={day.date} className="flex flex-col sm:flex-row gap-2 sm:gap-6">
-                  <p className="text-xs font-mono font-semibold text-[#9ab0a0] sm:w-24 sm:shrink-0 sm:pt-0.5">{day.date}</p>
-                  <ul className="space-y-1.5">
-                    {day.items.map((item) => (
-                      <li key={item} className="flex items-start gap-2 text-sm text-[#4a6a55]">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#F47316] shrink-0 mt-1.5" />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </motion.div>
-
+            CLNCH is an evolving exploration of personal context, opportunity intelligence, and human-centered AI. This log documents important product milestones, technical developments, integrations, and research questions shaping the platform.
+          </motion.p>
           <motion.div
-            initial={{ opacity: 0, y: 14 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
-            className="mt-6 rounded-2xl border-2 border-[#2d6a4f] bg-[#2d6a4f] p-6 sm:p-8 shadow-lg"
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+            className="mt-8 rounded-2xl border border-slate-200 bg-slate-50/70 px-5 py-4 max-w-2xl"
           >
-            <p className="text-xs font-bold uppercase tracking-widest text-[#a8d4b8] mb-5">Research notes</p>
-            <div className="space-y-5">
-              <div>
-                <p className="text-[10px] font-bold uppercase tracking-widest text-[#a8d4b8] mb-1">Question</p>
-                <p className="text-sm text-white leading-relaxed">Can intent be preserved alongside information?</p>
-              </div>
-              <div>
-                <p className="text-[10px] font-bold uppercase tracking-widest text-[#a8d4b8] mb-1">Observation</p>
-                <p className="text-sm text-[#c8e8d0] leading-relaxed">Users forget why information mattered long before they lose the information itself.</p>
-              </div>
-            </div>
+            <p className="text-sm text-slate-600 leading-relaxed">
+              CLNCH is built through a combination of product development, technical experimentation, and ongoing research into how people preserve context across fragmented digital environments.
+            </p>
+            <p className="text-sm font-semibold text-slate-800 leading-relaxed mt-3">
+              Every feature begins as a question. Every question becomes a system.
+            </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Entries */}
-      <section className="px-6 py-12 bg-[#faf9f5]">
-        <div className="max-w-3xl mx-auto">
-          <div className="space-y-px">
-            {entries.map((entry, i) => (
-              <motion.button
-                key={entry.id}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.08, ease: "easeOut" }}
-                onClick={() => setSelected(entry)}
-                className="w-full text-left group block py-10 border-t border-[#e8e4d8] last:border-b hover:bg-[#f0f5f0] transition-colors px-6 -mx-6 rounded-lg cursor-pointer"
-              >
-                <div className="flex items-start gap-6">
-                  <span className="text-3xl font-extrabold text-[#c8ddd0] group-hover:text-[#2d6a4f] transition-colors flex-shrink-0">
-                    {entry.number}
-                  </span>
-                  <div className="flex-1">
-                    <p
-                      className="text-xs font-bold uppercase tracking-widest mb-3"
-                      style={{ color: entry.categoryColor }}
-                    >
-                      {entry.category}
-                    </p>
-                    <h2 className="text-2xl font-extrabold text-[#1a3a2a] mb-2 tracking-tight group-hover:text-[#2d6a4f] transition-colors">
-                      {entry.title}
-                    </h2>
-                    <p className="text-base text-[#5a8a6a] leading-relaxed mb-4">
-                      {entry.excerpt}
-                    </p>
-                    <div className="flex items-center justify-between">
-                      <p className="text-xs text-[#9ab0a0]">{entry.date}</p>
-                      <span className="inline-flex items-center gap-1 text-sm font-semibold text-[#2d6a4f] group-hover:gap-2 transition-all">
-                        Read
-                        <ArrowRight size={14} />
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </motion.button>
-            ))}
-          </div>
+      {/* Timeline */}
+      <section className="px-6 py-14">
+        <div className="max-w-4xl mx-auto">
+          <TimelineSection />
         </div>
       </section>
 
-      {/* Article overlay */}
-      <AnimatePresence>
-        {selected && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-[100] bg-[#faf9f5] overflow-y-auto"
-            onClick={() => setSelected(null)}
-          >
-            <motion.div
-              initial={{ y: 30, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: 30, opacity: 0 }}
-              transition={{ duration: 0.4, ease: "easeOut" }}
-              className="max-w-2xl mx-auto px-6 py-24"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <button
-                onClick={() => setSelected(null)}
-                className="inline-flex items-center gap-2 text-sm font-semibold text-[#2d6a4f] hover:text-[#1a3a2a] transition-colors mb-12 cursor-pointer"
-              >
-                <ArrowLeft size={16} />
-                Back to the Log
-              </button>
+      {/* Activity stream */}
+      <section className="px-6 py-14">
+        <div className="max-w-4xl mx-auto">
+          <ActivityStream />
+        </div>
+      </section>
 
-              <p
-                className="text-xs font-bold uppercase tracking-widest mb-4"
-                style={{ color: selected.categoryColor }}
-              >
-                {selected.category}
+      {/* Research questions */}
+      <section className="px-6 py-14">
+        <div className="max-w-4xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 14 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.55, ease: "easeOut" }}
+            className="mb-10"
+          >
+            <div className="inline-block rounded-full border border-teal-200 bg-teal-50/70 px-4 py-1.5 mb-4">
+              <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-teal-700">Research notebook</p>
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">Open Research Questions</h2>
+          </motion.div>
+          <ResearchQuestions />
+        </div>
+      </section>
+
+      {/* Roadmap */}
+      <section className="px-6 py-14">
+        <div className="max-w-3xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 14 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.55, ease: "easeOut" }}
+            className="text-center mb-10"
+          >
+            <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-slate-400 mb-3">Future vision</p>
+            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">Where this is going</h2>
+          </motion.div>
+          <Roadmap />
+        </div>
+      </section>
+
+      {/* Closing statement */}
+      <section className="px-6 py-20">
+        <div className="max-w-3xl mx-auto text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          >
+            <p className="text-lg sm:text-xl text-slate-600 leading-relaxed font-medium max-w-2xl mx-auto">
+              CLNCH is not just documenting product development.
+            </p>
+            <p className="text-lg sm:text-xl text-slate-800 leading-relaxed font-bold max-w-2xl mx-auto mt-2">
+              It is documenting an ongoing investigation into how people think, remember, discover opportunities, and make decisions in an increasingly fragmented digital world.
+            </p>
+
+            <div className="mt-14 mb-10">
+              <p className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900">
+                Information is everywhere. Context is not.
               </p>
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#1a3a2a] leading-tight tracking-tight mb-4">
-                {selected.title}
-              </h1>
-              <p className="text-sm text-[#9ab0a0] mb-12">{selected.date}</p>
+              <p className="text-base font-semibold text-teal-700 mt-3">
+                Building the missing context layer of the web.
+              </p>
+            </div>
 
-              <div className="space-y-6">
-                {selected.body.map((para, i) => (
-                  <p
-                    key={i}
-                    className="text-lg text-[#3a5a45] leading-relaxed"
-                  >
-                    {para}
-                  </p>
-                ))}
-              </div>
-
-              <div className="mt-16 pt-8 border-t border-[#e8e4d8]">
-                <button
-                  onClick={() => setSelected(null)}
-                  className="inline-flex items-center gap-2 text-sm font-semibold text-[#2d6a4f] hover:text-[#1a3a2a] transition-colors cursor-pointer"
-                >
-                  <ArrowLeft size={16} />
-                  Back to the Log
-                </button>
-              </div>
-            </motion.div>
+            <a
+              href="/#waitlist"
+              className="inline-flex items-center gap-2 px-7 py-3 rounded-full bg-slate-900 text-white font-semibold text-sm hover:bg-slate-800 transition-colors shadow-lg shadow-slate-900/15"
+            >
+              Join the waitlist
+            </a>
           </motion.div>
-        )}
-      </AnimatePresence>
+        </div>
+      </section>
     </div>
   );
 }
