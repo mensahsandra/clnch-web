@@ -19,12 +19,12 @@ export default function OpportunityWedge() {
           viewport={{ once: true }}
           transition={{ duration: 0.55, ease: "easeOut" }}
         >
-          <p className="text-xs font-semibold tracking-[0.15em] uppercase text-[#7a9a85] mb-4">Where CLNCH starts</p>
+          <p className="text-xs font-semibold tracking-[0.15em] uppercase text-[#7a9a85] mb-4">Why we started with opportunities</p>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#1a3a2a] leading-tight mb-4">
-            We started with opportunities.
+            Opportunities are where fragmented context becomes visible.
           </h2>
           <p className="text-base text-[#4a6a55] leading-relaxed max-w-2xl mx-auto mb-8">
-            Jobs. Scholarships. Fellowships. Grants. Universities. Accelerators. Finding something worth pursuing is only the beginning.
+            Jobs, scholarships, grants, fellowships, university applications, accelerators, and funding programs require understanding, preparation, memory, decisions, and action. They are the first domain where CLNCH is being applied.
           </p>
         </motion.div>
 

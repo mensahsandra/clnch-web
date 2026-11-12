@@ -13,14 +13,20 @@ interface LogEntry {
   body: string[];
 }
 
+const buildLog = [
+  { date: "2026-11-12", items: ["Agent architecture audit", "Context infrastructure review", "Research roadmap update"] },
+  { date: "2026-11-10", items: ["Redesigned Connector Hub", "Added custom connector support", "Added MCP support (SSE & Stdio)", "Composio v3 migration", "Gemini extraction reliability improvements", "AI fallback pipeline", "Opportunity extraction hardening"] },
+  { date: "2026-11-04", items: ["Connected GitHub"] },
+  { date: "2026-11-02", items: ["Connected Gmail"] },
+];
+
 const entries: LogEntry[] = [
   {
     id: "sidebar",
     number: "01",
     category: "BUILDING",
     categoryColor: "#2d6a4f",
-    title: "We gave CLNCH a sidebar.",
-    excerpt:
+    title: "We gave CLNCH a sidebar.",    excerpt:
       "A small experiment in putting an AI opportunity assistant beside the web.",
     date: "September 2026",
     body: [
@@ -94,8 +100,58 @@ export default function TheClncLog() {
             transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
             className="text-lg text-[#4a6a55] leading-relaxed"
           >
-            Field notes, experiments, and releases from the work in progress.
+            Field notes, experiments, and a build log from the work in progress. This is a living lab — everything here ships from the same codebase you'll use.
           </motion.p>
+        </div>
+      </section>
+
+      {/* Build log */}
+      <section className="px-6 pb-4 bg-[#faf9f5]">
+        <div className="max-w-3xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 14 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            className="rounded-2xl border border-[#d8ead2] bg-white p-6 sm:p-8 shadow-sm"
+          >
+            <p className="text-xs font-bold uppercase tracking-widest text-[#2d6a4f] mb-6">Build log</p>
+            <div className="space-y-6">
+              {buildLog.map((day) => (
+                <div key={day.date} className="flex flex-col sm:flex-row gap-2 sm:gap-6">
+                  <p className="text-xs font-mono font-semibold text-[#9ab0a0] sm:w-24 sm:shrink-0 sm:pt-0.5">{day.date}</p>
+                  <ul className="space-y-1.5">
+                    {day.items.map((item) => (
+                      <li key={item} className="flex items-start gap-2 text-sm text-[#4a6a55]">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#F47316] shrink-0 mt-1.5" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 14 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
+            className="mt-6 rounded-2xl border-2 border-[#2d6a4f] bg-[#2d6a4f] p-6 sm:p-8 shadow-lg"
+          >
+            <p className="text-xs font-bold uppercase tracking-widest text-[#a8d4b8] mb-5">Research notes</p>
+            <div className="space-y-5">
+              <div>
+                <p className="text-[10px] font-bold uppercase tracking-widest text-[#a8d4b8] mb-1">Question</p>
+                <p className="text-sm text-white leading-relaxed">Can intent be preserved alongside information?</p>
+              </div>
+              <div>
+                <p className="text-[10px] font-bold uppercase tracking-widest text-[#a8d4b8] mb-1">Observation</p>
+                <p className="text-sm text-[#c8e8d0] leading-relaxed">Users forget why information mattered long before they lose the information itself.</p>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </section>
 

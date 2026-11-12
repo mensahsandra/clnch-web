@@ -16,11 +16,11 @@ export default function Footer() {
               />
               <div className="leading-none">
                 <p className="text-sm font-bold text-[#1a3a2a] tracking-wide">CLNCH</p>
-                <p className="text-[10px] text-[#5a8a6a] font-medium">The layer between you and the web.</p>
+                <p className="text-[10px] text-[#5a8a6a] font-medium">Building the missing context layer of the web.</p>
               </div>
             </div>
             <p className="text-xs text-[#7a9a85] leading-relaxed max-w-[200px]">
-              An AI assistant between you and the complexity of the web, helping you get things done.
+              Information is everywhere. Context is not.
             </p>
           </div>
 

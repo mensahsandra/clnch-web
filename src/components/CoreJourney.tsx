@@ -1,15 +1,15 @@
 import { motion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
-import { Bookmark, Search, ClipboardList, Send } from "lucide-react";
+import { Download, Search, Network, Brain, TrendingUp } from "lucide-react";
 
 const stages = [
   {
     n: "01",
-    key: "FIND",
-    icon: Bookmark,
-    title: "Find",
-    body: "You discover a scholarship, job, fellowship, grant or program.",
-    detail: "Paste the link into CLNCH. CLNCH takes it from there.",
+    key: "CAPTURE",
+    icon: Download,
+    title: "Capture",
+    body: "Everything you come across, in one place.",
+    detail: "Web pages. Emails. Documents. Conversations. Research. Opportunities. CLNCH captures it before the context behind it disappears.",
     dark: false,
   },
   {
@@ -17,26 +17,35 @@ const stages = [
     key: "UNDERSTAND",
     icon: Search,
     title: "Understand",
-    body: "CLNCH investigates the opportunity.",
-    detail: "It reads the page, follows relevant information, extracts requirements, finds deadlines, and simplifies complicated language.",
+    body: "Meaning, not just content.",
+    detail: "CLNCH extracts what matters — requirements, deadlines, intent — and simplifies complicated information.",
     dark: false,
   },
   {
     n: "03",
-    key: "PREPARE",
-    icon: ClipboardList,
-    title: "Prepare",
-    body: "CLNCH turns the opportunity into a preparation path.",
-    detail: "Checklist. Documents. Requirements. Deadline. Questions. Missing information. It can retrieve information you've already given it and help prepare responses.",
+    key: "CONNECT",
+    icon: Network,
+    title: "Connect",
+    body: "Nothing stands alone.",
+    detail: "Every piece of information links to your projects, people, goals, and knowledge. Fragmented sources become one picture.",
     dark: false,
   },
   {
     n: "04",
-    key: "COMPLETE",
-    icon: Send,
-    title: "Complete",
-    body: "CLNCH stays beside you while you move through the process.",
-    detail: '"What does this question mean?" "Help me answer this." "Where did I put that information?" "Read this page for me." CLNCH can explain, retrieve, draft, organize, copy and paste, and eventually assist with form filling. For consequential actions, CLNCH asks for approval. The human remains in control.',
+    key: "REMEMBER",
+    icon: Brain,
+    title: "Remember",
+    body: "Context that survives time.",
+    detail: "Ask why you saved something, what it was for, and where you left off. CLNCH keeps a personal memory and a timeline of your work.",
+    dark: false,
+  },
+  {
+    n: "05",
+    key: "PROGRESS",
+    icon: TrendingUp,
+    title: "Progress",
+    body: "From understanding to action.",
+    detail: "Better decisions. Less friction. More opportunities completed. For consequential actions, CLNCH asks for approval — the human remains in control.",
     dark: true,
   },
 ];
@@ -56,18 +65,15 @@ export default function CoreJourney() {
           transition={{ duration: 0.5, ease: "easeOut" }}
           className="text-center mb-16"
         >
-          <p className="text-xs font-semibold tracking-[0.15em] uppercase text-[#7a9a85] mb-3">The core journey</p>
+          <p className="text-xs font-semibold tracking-[0.15em] uppercase text-[#7a9a85] mb-3">How CLNCH works</p>
           <h2 className="text-4xl sm:text-5xl font-extrabold text-[#1a3a2a] tracking-tight leading-tight mb-3">
-            Find.
+            Capture. Understand. Connect.
           </h2>
-          <h2 className="text-4xl sm:text-5xl font-extrabold text-[#2d6a4f] tracking-tight leading-tight mb-3">
-            Understand.
-          </h2>
-          <h2 className="text-4xl sm:text-5xl font-extrabold text-[#1a3a2a] tracking-tight leading-tight">
-            Prepare. Complete.
+          <h2 className="text-4xl sm:text-5xl font-extrabold text-[#2d6a4f] tracking-tight leading-tight">
+            Remember. Progress.
           </h2>
           <p className="text-sm text-[#4a6a55] mt-6 max-w-md mx-auto leading-relaxed">
-            Find. Understand. Prepare. Complete. CLNCH stays with you across the process.
+            Five stages. One continuous context that follows you across the web.
           </p>
         </motion.div>
 
@@ -115,7 +121,7 @@ export default function CoreJourney() {
           className="mt-10 text-center"
         >
           <div className="inline-flex items-center gap-2 bg-[#f0f7f2] text-[#2d6a4f] text-xs font-semibold px-5 py-2.5 rounded-full border border-[#c8ddd0]">
-            You stay in control. CLNCH makes the process easier.
+            You stay in control. CLNCH holds the context.
           </div>
         </motion.div>
       </div>

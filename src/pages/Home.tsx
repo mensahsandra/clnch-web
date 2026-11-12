@@ -1,9 +1,10 @@
 import Hero from "../components/Hero";
-import OpportunityCategories from "../components/OpportunityCategories";
 import Problem from "../components/Problem";
+import Insight from "../components/Insight";
+import OpportunityCategories from "../components/OpportunityCategories";
 import OpportunityWedge from "../components/OpportunityWedge";
-import Philosophy from "../components/Philosophy";
 import CoreJourney from "../components/CoreJourney";
+import ResearchFoundation from "../components/ResearchFoundation";
 import ClnchLens from "../components/ClnchLens";
 import PageIntelligence from "../components/PageIntelligence";
 import OpportunityProfile from "../components/OpportunityProfile";
@@ -11,8 +12,10 @@ import Preparation from "../components/Preparation";
 import TheSidebar from "../components/TheSidebar";
 import OpportunityWatch from "../components/OpportunityWatch";
 import TheAgent from "../components/TheAgent";
+import Architecture from "../components/Architecture";
 import Completion from "../components/Completion";
 import ProductVision from "../components/ProductVision";
+import FounderNote from "../components/FounderNote";
 import FinalPhilosophy from "../components/FinalPhilosophy";
 import FinalCTA from "../components/FinalCTA";
 
@@ -20,11 +23,12 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <OpportunityCategories />
       <Problem />
+      <Insight />
+      <OpportunityCategories />
       <OpportunityWedge />
-      <Philosophy />
       <CoreJourney />
+      <ResearchFoundation />
       <ClnchLens />
       <PageIntelligence />
       <OpportunityProfile />
@@ -32,8 +36,10 @@ export default function Home() {
       <TheSidebar />
       <OpportunityWatch />
       <TheAgent />
+      <Architecture />
       <Completion />
       <ProductVision />
+      <FounderNote />
       <FinalPhilosophy />
       <FinalCTA />
     </>

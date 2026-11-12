@@ -1,12 +1,21 @@
 import { motion } from "motion/react";
-import { ArrowRight, Globe2, Send, UserRound } from "lucide-react";
 
-const obstacles = [
-  "five tabs for one task",
-  "information scattered across tools",
-  "forms that ask for context you already gave",
-  "terms that take time to understand",
-  "work you have to repeat",
+const sources = [
+  "Google",
+  "ChatGPT",
+  "Claude",
+  "Email",
+  "PDFs",
+  "Notion",
+  "LinkedIn",
+  "Research Papers",
+  "Browser Tabs",
+];
+
+const questions = [
+  "Tell me who you are again.",
+  "What are you working on?",
+  "Why did you save this?",
 ];
 
 export default function Problem() {
@@ -20,16 +29,13 @@ export default function Problem() {
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="text-center mb-14"
         >
-          <p className="text-xs font-semibold tracking-[0.15em] uppercase text-[#7a9a85] mb-4">What is CLNCH?</p>
+          <p className="text-xs font-semibold tracking-[0.15em] uppercase text-[#7a9a85] mb-4">The problem</p>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight text-[#1a3a2a] mb-5">
-            The web is powerful.
+            Your information lives everywhere.
           </h2>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight text-[#2d6a4f] mb-5">
-            It's also fragmented.
+            Your context lives nowhere.
           </h2>
-          <p className="text-base text-[#4a6a55] max-w-2xl mx-auto leading-relaxed">
-            One task can mean opening five tabs, copying information between apps, figuring out what something means, and remembering what you were doing in the first place.
-          </p>
         </motion.div>
 
         <motion.div
@@ -37,11 +43,11 @@ export default function Problem() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.15 }}
-          className="flex flex-wrap justify-center gap-2.5 mb-16"
+          className="flex flex-wrap justify-center gap-2.5 mb-12"
         >
-          {obstacles.map((obstacle, i) => (
+          {sources.map((source, i) => (
             <motion.div
-              key={obstacle}
+              key={source}
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
@@ -49,35 +55,46 @@ export default function Problem() {
               className="flex items-center gap-2 bg-white border border-[#d8ead2] rounded-full px-4 py-2.5 shadow-sm"
             >
               <span className="w-1.5 h-1.5 rounded-full bg-[#F47316] shrink-0" />
-              <span className="text-sm text-[#4a6a55] font-medium">{obstacle}</span>
+              <span className="text-sm text-[#4a6a55] font-medium">{source}</span>
             </motion.div>
           ))}
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 14 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.55, delay: 0.2 }}
+          className="text-center mb-14"
+        >
+          <p className="text-lg font-bold text-[#1a3a2a] mb-2">All disconnected.</p>
+          <p className="text-base text-[#4a6a55] max-w-xl mx-auto leading-relaxed mb-6">
+            You constantly rebuild context. Every new system asks:
+          </p>
+          <div className="flex flex-wrap justify-center gap-2.5">
+            {questions.map((q) => (
+              <span key={q} className="inline-flex items-center gap-2 rounded-full bg-white border-2 border-dashed border-[#c8ddd0] px-4 py-2 text-sm font-semibold text-[#7a9a85] italic">
+                {q}
+              </span>
+            ))}
+          </div>
         </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.25 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
           className="max-w-3xl mx-auto"
         >
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-3">
-            <div className="w-full sm:w-44 rounded-2xl border border-[#d8ead2] bg-white p-5 text-center shadow-sm">
-              <UserRound size={22} className="text-[#2d6a4f] mx-auto mb-3" />
-              <p className="text-xs font-bold uppercase tracking-widest text-[#7a9a85] mb-1">You</p>
-              <p className="text-sm font-semibold text-[#1a3a2a]">Your goal</p>
+            <div className="w-full sm:w-48 rounded-2xl border border-[#d8ead2] bg-white p-5 text-center shadow-sm">
+              <p className="text-xs font-bold uppercase tracking-widest text-[#7a9a85] mb-1">Every tool</p>
+              <p className="text-sm font-semibold text-[#1a3a2a]">Stores your information</p>
             </div>
-            <ArrowRight size={20} className="text-[#b8d4bc] rotate-90 sm:rotate-0" />
-            <div className="w-full sm:w-48 rounded-2xl border-2 border-[#2d6a4f] bg-[#2d6a4f] p-5 text-center shadow-lg">
-              <Send size={22} className="text-[#a8d4b8] mx-auto mb-3" />
-              <p className="text-xs font-bold uppercase tracking-widest text-[#a8d4b8] mb-1">CLNCH</p>
-              <p className="text-sm font-semibold text-white">The layer in the middle</p>
-            </div>
-            <ArrowRight size={20} className="text-[#b8d4bc] rotate-90 sm:rotate-0" />
-            <div className="w-full sm:w-44 rounded-2xl border border-[#d8ead2] bg-white p-5 text-center shadow-sm">
-              <Globe2 size={22} className="text-[#2d6a4f] mx-auto mb-3" />
-              <p className="text-xs font-bold uppercase tracking-widest text-[#7a9a85] mb-1">The web</p>
-              <p className="text-sm font-semibold text-[#1a3a2a]">All the moving parts</p>
+            <div className="w-full sm:w-56 rounded-2xl border-2 border-[#F47316] bg-white p-5 text-center shadow-lg">
+              <p className="text-xs font-bold uppercase tracking-widest text-[#F47316] mb-1">No tool</p>
+              <p className="text-sm font-semibold text-[#1a3a2a]">Remembers your context</p>
             </div>
           </div>
         </motion.div>
@@ -87,9 +104,9 @@ export default function Problem() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="text-center mt-14 text-lg font-bold text-[#1a3a2a]"
+          className="text-center mt-14 text-lg font-bold text-[#1a3a2a] max-w-2xl mx-auto"
         >
-          CLNCH helps you move through the web without constantly piecing the process together yourself.
+          CLNCH exists to close that gap — a personal context layer that holds the why behind everything you discover.
         </motion.p>
       </div>
     </section>

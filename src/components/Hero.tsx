@@ -26,7 +26,7 @@ export default function Hero() {
               transition={{ duration: 0.5, delay: 0.05, ease: "easeOut" }}
               className="text-xs font-semibold tracking-[0.15em] uppercase text-[#7a9a85] mb-5"
             >
-              The AI assistant between you and the web
+              Personal context infrastructure for the web
             </motion.p>
             <motion.h1
               initial={{ opacity: 0, y: 12 }}
@@ -34,7 +34,7 @@ export default function Hero() {
               transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
               className="text-4xl sm:text-5xl lg:text-[3.5rem] font-extrabold leading-[1.08] tracking-tight text-[#1a3a2a] mb-3"
             >
-              Get things done
+              Information is everywhere.
             </motion.h1>
             <motion.h1
               initial={{ opacity: 0, y: 12 }}
@@ -42,7 +42,7 @@ export default function Hero() {
               transition={{ duration: 0.6, delay: 0.23, ease: "easeOut" }}
               className="text-4xl sm:text-5xl lg:text-[3.5rem] font-extrabold leading-[1.08] tracking-tight text-[#2d6a4f] mb-7"
             >
-              without switching between tabs, tools, or apps.
+              Context is not.
             </motion.h1>
 
             <motion.p
@@ -51,7 +51,7 @@ export default function Hero() {
               transition={{ duration: 0.5, delay: 0.31, ease: "easeOut" }}
               className="text-base text-[#4a6a55] leading-relaxed max-w-md mb-3"
             >
-              CLNCH sits in the middle. It understands what you're trying to do and helps you move through the web without piecing the process together yourself.
+              CLNCH is building a personal context layer for the web — helping people preserve the <span className="font-semibold text-[#2d6a4f]">why</span> behind what they discover, connect fragmented information, and turn understanding into meaningful progress.
             </motion.p>
             <motion.p
               initial={{ opacity: 0, y: 8 }}
@@ -59,8 +59,25 @@ export default function Hero() {
               transition={{ duration: 0.5, delay: 0.36, ease: "easeOut" }}
               className="text-sm text-[#5a8a6a] leading-relaxed max-w-md mb-8"
             >
-              From finding an opportunity to understanding it, preparing for it, and completing it — CLNCH stays with you through the process.
+              Starting with opportunities. Building toward everything else.
             </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.42 }}
+              className="flex flex-wrap items-center gap-1.5 mb-8 text-xs font-semibold"
+            >
+              {["People", "Projects", "Ideas", "Research", "Opportunities", "Goals", "Conversations"].map((word) => (
+                <span key={word} className="px-2.5 py-1 rounded-full border border-[#d8ead2] bg-white text-[#5a8a6a]">{word}</span>
+              ))}
+              <span className="text-[#b8d4bc] px-1">↓</span>
+              <span className="px-2.5 py-1 rounded-full bg-[#2d6a4f] text-white">CLNCH</span>
+              <span className="text-[#b8d4bc] px-1">↓</span>
+              {["Understanding", "Decision", "Action", "Progress"].map((word) => (
+                <span key={word} className="px-2.5 py-1 rounded-full bg-[#e8f5ee] border border-[#c8ddd0] text-[#2d6a4f]">{word}</span>
+              ))}
+            </motion.div>
 
             <motion.div
               initial={{ opacity: 0, y: 8 }}
@@ -69,10 +86,10 @@ export default function Hero() {
               className="flex flex-wrap items-center gap-3"
             >
               <a
-                href="#waitlist"
+                href="#vision"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#F47316] text-white font-semibold text-sm hover:bg-[#d9651a] transition-colors cursor-pointer shadow-md shadow-orange-200"
               >
-                Join the waitlist
+                Explore the Vision
               </a>
               <a
                 href="#how-it-works"

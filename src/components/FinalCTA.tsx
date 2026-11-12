@@ -69,10 +69,10 @@ export default function FinalCTA() {
           </h2>
 
           <p className="text-base text-[#4a6a55] mb-2 max-w-md mx-auto leading-relaxed">
-            Join the waitlist for an AI assistant that stays with you across the web.
+            Join the waitlist for the personal context layer of the web.
           </p>
           <p className="text-base text-[#4a6a55] mb-10 max-w-md mx-auto leading-relaxed">
-            Start with opportunities. Build toward everything else.
+            Information is everywhere. Context is not.
           </p>
 
           {!submitted ? (
