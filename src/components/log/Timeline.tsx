@@ -10,9 +10,9 @@ export interface TimelineEntry {
   category: LogCategory;
   title: string;
   intro: string;
-  listHeading?: string;
   list?: string[];
   blocks?: { heading: string; text: string }[];
+  research?: string;
   status: string;
 }
 
@@ -43,6 +43,7 @@ export const ENTRIES: TimelineEntry[] = [
     blocks: [
       { heading: "Research Question", text: "What capabilities should form the foundation of a personal context layer?" },
     ],
+    research: "An architecture audit is really a question about priorities: which capabilities are load-bearing for context, and which are conveniences.",
     status: "Verified",
   },
   {
@@ -61,6 +62,7 @@ export const ENTRIES: TimelineEntry[] = [
     blocks: [
       { heading: "Principle", text: "CLNCH can prepare. The human decides." },
     ],
+    research: "Permission transparency is a prerequisite for trust: people will only connect their lives to a system that shows exactly what it can see.",
     status: "Released",
   },
   {
@@ -79,6 +81,7 @@ export const ENTRIES: TimelineEntry[] = [
     blocks: [
       { heading: "Research Note", text: "Investigating how external systems, tools, and agents may eventually participate in a shared context ecosystem." },
     ],
+    research: "Standard protocols like MCP hint at a future where context flows between agents — the connector layer is the first experiment in that direction.",
     status: "Released",
   },
   {
@@ -97,6 +100,7 @@ export const ENTRIES: TimelineEntry[] = [
     blocks: [
       { heading: "Result", text: "Opportunity capture succeeds even when external providers are unavailable." },
     ],
+    research: "Graceful degradation is a context-preservation strategy: partial understanding, kept alive, beats total failure.",
     status: "Released",
   },
   {
@@ -111,6 +115,7 @@ export const ENTRIES: TimelineEntry[] = [
       "Development memory",
       "Build history",
     ],
+    research: "A person's code history is one of the richest records of their intent — but only if it can be connected to everything else they're working on.",
     status: "Connected",
   },
   {
@@ -214,14 +219,17 @@ export function TimelineSection() {
                         <p className="text-sm text-slate-600 leading-relaxed mb-4">{entry.intro}</p>
 
                         {entry.list && (
-                          <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-2 mb-5">
+                          <div className="mb-5">
+                            <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-slate-400 mb-2.5">Technical changes</p>
+                            <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-2">
                             {entry.list.map((item) => (
                               <li key={item} className="flex items-start gap-2.5 text-sm text-slate-700">
                                 <span className="mt-[7px] h-1.5 w-1.5 rounded-full shrink-0" style={{ backgroundColor: color }} />
                                 {item}
                               </li>
                             ))}
-                          </ul>
+                            </ul>
+                          </div>
                         )}
 
                         {entry.blocks?.map((block) => (
@@ -233,6 +241,13 @@ export function TimelineSection() {
                             <p className="text-sm text-slate-700 leading-relaxed">{block.text}</p>
                           </div>
                         ))}
+
+                        {entry.research && (
+                          <div className="rounded-xl border border-blue-100 bg-blue-50/50 px-4 py-3.5 mb-3">
+                            <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-blue-700 mb-1">Research implications</p>
+                            <p className="text-sm text-slate-700 leading-relaxed">{entry.research}</p>
+                          </div>
+                        )}
 
                         <div className="mt-4 flex items-center gap-2">
                           <CheckCircle2 size={15} className="text-teal-600" />

@@ -4,11 +4,9 @@ import { Menu, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 
 const navLinks = [
-  { label: "How it works", href: "/#how-it-works" },
-  { label: "CLNCH Lens", href: "/#clnch-lens" },
-  { label: "Opportunity Watch", href: "/#opportunity-watch" },
-  { label: "Vision", href: "/#vision" },
+  { label: "How It Works", href: "/#how-it-works" },
   { label: "About", href: "/about" },
+  { label: "Log", href: "/log" },
 ];
 
 export default function Navbar() {
@@ -40,7 +38,7 @@ export default function Navbar() {
           />
           <div className="leading-none">
             <p className="text-lg font-bold text-[#1a3a2a] tracking-wide">CLNCH</p>
-            <p className="text-xs text-[#5a8a6a] font-medium">The layer between you and the web.</p>
+            <p className="text-xs text-[#5a8a6a] font-medium">Building the missing context layer of the web.</p>
           </div>
         </Link>
 
@@ -70,7 +68,7 @@ export default function Navbar() {
           href="/#waitlist"
           className="hidden md:inline-flex items-center px-5 py-2.5 rounded-full bg-[#F47316] text-white text-sm font-semibold hover:bg-[#d9651a] transition-colors cursor-pointer shadow-sm"
         >
-          Join the waitlist
+          Join Waitlist
         </a>
 
         <button
