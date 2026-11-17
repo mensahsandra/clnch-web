@@ -1,7 +1,6 @@
 import Hero from "../components/Hero";
 import Problem from "../components/Problem";
 import Insight from "../components/Insight";
-import OpportunityCategories from "../components/OpportunityCategories";
 import OpportunityWedge from "../components/OpportunityWedge";
 import CoreJourney from "../components/CoreJourney";
 import ResearchFoundation from "../components/ResearchFoundation";
@@ -25,7 +24,6 @@ export default function Home() {
       <Hero />
       <Problem />
       <Insight />
-      <OpportunityCategories />
       <OpportunityWedge />
       <CoreJourney />
       <ResearchFoundation />

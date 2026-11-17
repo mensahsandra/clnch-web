@@ -1,115 +1,112 @@
 import { motion } from "motion/react";
-import IPhoneMockup from "./IPhoneMockup";
+import { ArrowDown, ArrowRight } from "lucide-react";
 
-const productDemoVideo = "https://www.dropbox.com/scl/fi/df5sw9ggevhhim3q77aqc/CLNCH_app_product_demo_video_202608311843.mp4?rlkey=k6s0ndrzc8mja8c8bjsg4iyc3&st=82znydpl&dl=1";
+const orbitingObjects = [
+  { label: "projects", left: "8%", top: "18%", rotate: -12, tone: "from-[#78bae6] to-[#f1f0ec]" },
+  { label: "ideas", left: "77%", top: "12%", rotate: 8, tone: "from-[#f06ba8] to-[#facb0e]" },
+  { label: "research", left: "4%", top: "62%", rotate: 6, tone: "from-[#facb0e] to-[#f1f0ec]" },
+  { label: "goals", left: "82%", top: "62%", rotate: -8, tone: "from-[#78bae6] to-[#f06ba8]" },
+  { label: "people", left: "18%", top: "78%", rotate: 12, tone: "from-[#f1f0ec] to-[#78bae6]" },
+  { label: "opportunities", left: "71%", top: "81%", rotate: -5, tone: "from-[#facb0e] to-[#f06ba8]" },
+];
 
 export default function Hero() {
   return (
-    <section id="top" className="relative pt-32 pb-20 px-6 overflow-hidden bg-[#faf9f5]">
-      <div className="absolute inset-0 pointer-events-none">
-        <svg width="100%" height="100%" className="opacity-[0.04]">
-          <defs>
-            <pattern id="dots" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
-              <circle cx="2" cy="2" r="1.5" fill="#2d6a4f" />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#dots)" />
-        </svg>
+    <section id="top" className="relative min-h-[780px] overflow-hidden bg-[#e5e4e0] px-5 sm:px-8 pt-28 pb-12 text-[#1d1d1d]">
+      <div className="absolute inset-0 pointer-events-none" aria-hidden>
+        <div className="absolute left-1/2 top-[52%] h-[760px] w-[760px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-[#bfbebe]/70" />
+        <div className="absolute left-[48%] top-[48%] h-[1040px] w-[1040px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-[#bfbebe]/50" />
+        <motion.div
+          className="absolute left-1/2 top-[48%] h-[420px] w-[420px] sm:h-[530px] sm:w-[530px] -translate-x-1/2 -translate-y-1/2 rounded-[43%_57%_52%_48%/51%_46%_54%_49%]"
+          style={{
+            background: "radial-gradient(circle at 44% 49%, rgba(255,255,255,0.95) 0 14%, transparent 45%), radial-gradient(circle at 18% 35%, #f06ba8 0%, transparent 50%), radial-gradient(circle at 78% 18%, #facb0e 0%, transparent 52%), radial-gradient(circle at 66% 88%, #78bae6 0%, transparent 57%), #f1f0ec",
+            filter: "blur(1px)",
+            boxShadow: "inset -30px -34px 60px rgba(29,29,29,0.12), 0 25px 80px rgba(120,186,230,0.18)",
+          }}
+          animate={{ rotate: [0, 5, -3, 0], scale: [1, 1.025, 0.99, 1] }}
+          transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <div className="absolute left-[59%] top-[28%] h-16 w-16 rounded-full bg-white/50 blur-2xl" />
       </div>
 
-      <div className="max-w-6xl mx-auto relative">
-        <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-12 items-center">
-          <div>
-            <motion.p
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.05, ease: "easeOut" }}
-              className="text-xs font-semibold tracking-[0.15em] uppercase text-[#7a9a85] mb-5"
-            >
-              Personal context infrastructure for the web
-            </motion.p>
-            <motion.h1
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
-              className="text-4xl sm:text-5xl lg:text-[3.5rem] font-extrabold leading-[1.08] tracking-tight text-[#1a3a2a] mb-3"
-            >
-              Information is everywhere.
-            </motion.h1>
-            <motion.h1
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.23, ease: "easeOut" }}
-              className="text-4xl sm:text-5xl lg:text-[3.5rem] font-extrabold leading-[1.08] tracking-tight text-[#2d6a4f] mb-7"
-            >
-              Context is not.
-            </motion.h1>
+      {orbitingObjects.map((object, i) => (
+        <motion.div
+          key={object.label}
+          initial={{ opacity: 0, scale: 0.7, y: 12 }}
+          animate={{ opacity: 1, scale: 1, y: [0, -7, 0] }}
+          transition={{ opacity: { duration: 0.7, delay: 0.4 + i * 0.08 }, scale: { duration: 0.7, delay: 0.4 + i * 0.08 }, y: { duration: 5 + i * 0.4, repeat: Infinity, ease: "easeInOut", delay: i * 0.35 } }}
+          className={`absolute z-10 hidden sm:flex h-14 w-20 items-end justify-between rounded-[10px] bg-gradient-to-br ${object.tone} p-2 shadow-[0_10px_24px_rgba(29,29,29,0.10)]`}
+          style={{ left: object.left, top: object.top, rotate: `${object.rotate}deg` }}
+        >
+          <span className="text-[9px] uppercase tracking-[0.08em] text-[#1d1d1d]/70">{object.label}</span>
+          <span className="h-2 w-2 rounded-full border border-[#1d1d1d]/40" />
+        </motion.div>
+      ))}
 
-            <motion.p
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.31, ease: "easeOut" }}
-              className="text-base text-[#4a6a55] leading-relaxed max-w-md mb-3"
-            >
-              CLNCH is building a personal context layer for the web — helping people preserve the <span className="font-semibold text-[#2d6a4f]">why</span> behind what they discover, connect fragmented information, and turn understanding into meaningful progress.
-            </motion.p>
-            <motion.p
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.36, ease: "easeOut" }}
-              className="text-sm text-[#5a8a6a] leading-relaxed max-w-md mb-8"
-            >
-              Starting with opportunities. Building toward everything else.
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.42 }}
-              className="flex flex-wrap items-center gap-1.5 mb-8 text-xs font-semibold"
-            >
-              {["People", "Projects", "Ideas", "Research", "Opportunities", "Goals", "Conversations"].map((word) => (
-                <span key={word} className="px-2.5 py-1 rounded-full border border-[#d8ead2] bg-white text-[#5a8a6a]">{word}</span>
-              ))}
-              <span className="text-[#b8d4bc] px-1">↓</span>
-              <span className="px-2.5 py-1 rounded-full bg-[#2d6a4f] text-white">CLNCH</span>
-              <span className="text-[#b8d4bc] px-1">↓</span>
-              {["Understanding", "Decision", "Action", "Progress"].map((word) => (
-                <span key={word} className="px-2.5 py-1 rounded-full bg-[#e8f5ee] border border-[#c8ddd0] text-[#2d6a4f]">{word}</span>
-              ))}
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.39, ease: "easeOut" }}
-              className="flex flex-wrap items-center gap-3"
-            >
-              <a
-                href="#vision"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#F47316] text-white font-semibold text-sm hover:bg-[#d9651a] transition-colors cursor-pointer shadow-md shadow-orange-200"
-              >
-                Explore the Vision
-              </a>
-              <a
-                href="#how-it-works"
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-[#c8ddd0] text-[#2d6a4f] font-semibold text-sm hover:bg-[#e8f5ee] transition-colors cursor-pointer"
-              >
-                <span className="w-5 h-5 rounded-full border border-[#2d6a4f] flex items-center justify-center">
-                  <span className="w-0 h-0 border-t-[4px] border-t-transparent border-l-[7px] border-l-[#2d6a4f] border-b-[4px] border-b-transparent ml-0.5" />
-                </span>
-                See how it works
-              </a>
-            </motion.div>
-          </div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 24, scale: 0.96 }}
-            animate={{ opacity: 1, x: 0, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.25, ease: "easeOut" }}
-            className="relative min-h-[620px] flex items-center justify-center lg:justify-center lg:-ml-4"
+      <div className="relative z-20 mx-auto flex min-h-[640px] max-w-[1400px] flex-col justify-between">
+        <div className="flex items-start justify-between gap-8">
+          <motion.p
+            initial={{ opacity: 0, x: -12 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            className="max-w-[180px] text-[11px] font-medium uppercase tracking-[0.16em] text-[#1d1d1d]/65"
           >
-            <IPhoneMockup videoSrc={productDemoVideo} size="hero" className="z-10" />
+            Personal context infrastructure for the web
+          </motion.p>
+          <motion.a
+            initial={{ opacity: 0, x: 12 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+            href="#waitlist"
+            className="inline-flex items-center gap-3 rounded-full border border-[#1d1d1d]/25 bg-[#e5e4e0]/70 px-4 py-2 text-[11px] font-medium uppercase tracking-[0.1em] backdrop-blur-sm transition-colors hover:bg-[#f1f0ec]"
+          >
+            Join the waitlist <ArrowRight size={13} />
+          </motion.a>
+        </div>
+
+        <div className="relative mx-auto w-full max-w-[1040px] text-center sm:text-left">
+          <motion.h1
+            initial={{ opacity: 0, y: 22 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            className="relative z-20 text-[clamp(3.7rem,10.4vw,9.2rem)] font-normal uppercase leading-[0.88] tracking-[-0.06em]"
+          >
+            Information
+          </motion.h1>
+          <motion.h1
+            initial={{ opacity: 0, y: 22 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.32, ease: "easeOut" }}
+            className="relative z-20 ml-[14%] text-[clamp(3.7rem,10.4vw,9.2rem)] font-normal uppercase leading-[0.88] tracking-[-0.06em]"
+          >
+            is everywhere.
+          </motion.h1>
+          <motion.h1
+            initial={{ opacity: 0, y: 22 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.44, ease: "easeOut" }}
+            className="relative z-20 ml-[32%] text-[clamp(3.7rem,10.4vw,9.2rem)] font-normal uppercase leading-[0.88] tracking-[-0.06em]"
+          >
+            Context is not.
+          </motion.h1>
+        </div>
+
+        <div className="flex items-end justify-between gap-8">
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.7 }}
+            className="max-w-[260px] text-xs leading-relaxed text-[#1d1d1d]/65"
+          >
+            CLNCH helps preserve the why behind what you discover, connect what feels fragmented, and move understanding forward.
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.8 }}
+            className="flex items-center gap-2 text-[10px] uppercase tracking-[0.16em] text-[#1d1d1d]/55"
+          >
+            Scroll to explore <ArrowDown size={13} />
           </motion.div>
         </div>
       </div>
