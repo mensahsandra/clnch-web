@@ -1,124 +1,13 @@
 import { motion } from "motion/react";
-import { User, Bot, Wrench, Database, Sparkles, Blocks } from "lucide-react";
+import { Bot, Blocks, Database, Sparkles, User, Wrench } from "lucide-react";
 
-const agentLayers = ["Understanding", "Context Resolution", "Tool Dispatch", "Reasoning", "Human Approval"];
-const tools = ["Retrieve Web", "Get Profile", "Get Context", "Assess Fit", "Prepare Action", "Composio Actions"];
+const layers = ["Understanding", "Context Resolution", "Tool Dispatch", "Reasoning", "Human Approval"];
+const tools = ["Retrieve Web", "Get Profile", "Get Context", "Assess Fit", "Prepare Action"];
 
-function FlowNode({
-  icon: Icon,
-  label,
-  sub,
-  dark,
-}: {
-  icon: typeof User;
-  label: string;
-  sub?: string[];
-  dark?: boolean;
-}) {
-  return (
-    <div
-      className={`rounded-2xl border px-5 py-4 w-full max-w-sm mx-auto shadow-sm ${
-        dark ? "border-[#2d6a4f] bg-[#2d6a4f] shadow-lg" : "border-[#d8ead2] bg-white"
-      }`}
-    >
-      <div className="flex items-center justify-center gap-2.5">
-        <Icon size={16} className={dark ? "text-[#a8d4b8]" : "text-[#2d6a4f]"} />
-        <p className={`text-sm font-bold ${dark ? "text-white" : "text-[#1a3a2a]"}`}>{label}</p>
-      </div>
-      {sub && (
-        <div className="mt-3 flex flex-wrap justify-center gap-1.5">
-          {sub.map((item) => (
-            <span
-              key={item}
-              className={`text-[11px] font-semibold px-2.5 py-1 rounded-full ${
-                dark ? "bg-[#2d6a4f]/40 text-[#c8e8d0]" : "bg-[#f0f7f2] text-[#4a6a55] border border-[#e8f0ea]"
-              }`}
-            >
-              {item}
-            </span>
-          ))}
-        </div>
-      )}
-    </div>
-  );
-}
-
-function Arrow() {
-  return (
-    <div className="flex justify-center py-2">
-      <span className="text-[#b8d4bc] text-lg leading-none">↓</span>
-    </div>
-  );
+function Node({ icon: Icon, label, items, accent = false }: { icon: typeof User; label: string; items?: string[]; accent?: boolean }) {
+  return <div className={`rounded-2xl border p-6 ${accent ? "border-[#7652a8]/60 bg-[#7652a8]/15" : "border-white/[0.08] bg-[#1a1a1a]"}`}><div className="flex items-center gap-3"><Icon size={18} strokeWidth={1.2} className={accent ? "text-[#f06ba8]" : "text-[#78bae6]"} /><p className="text-base text-[#e7e7e7]">{label}</p></div>{items && <div className="mt-5 flex flex-wrap gap-2">{items.map((item) => <span key={item} className="rounded-full border border-white/[0.1] px-3 py-1.5 text-[10px] text-[#a0a0a0]">{item}</span>)}</div>}</div>;
 }
 
 export default function Architecture() {
-  return (
-    <section id="architecture" className="py-24 px-6 bg-[#faf9f5]">
-      <div className="max-w-4xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 14 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.55, ease: "easeOut" }}
-          className="text-center mb-14"
-        >
-          <p className="text-xs font-semibold tracking-[0.15em] uppercase text-[#7a9a85] mb-4">Architecture</p>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#1a3a2a] leading-tight tracking-tight mb-5">
-            This isn't a concept. It's built.
-          </h2>
-          <p className="text-base text-[#4a6a55] leading-relaxed max-w-2xl mx-auto">
-            CLNCH runs on an agent architecture with a real tool system, persistent memory, and a human approval step before anything consequential happens.
-          </p>
-        </motion.div>
-
-        <div className="max-w-md mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4 }}
-          >
-            <FlowNode icon={User} label="You" />
-            <Arrow />
-            <FlowNode icon={Bot} label="ClnchAgent" sub={agentLayers} dark />
-            <Arrow />
-            <FlowNode icon={Wrench} label="Tool Registry" sub={tools} />
-            <Arrow />
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.25 }}
-            className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-2"
-          >
-            {[
-              { icon: Database, label: "Supabase Memory", note: "Personal context store" },
-              { icon: Sparkles, label: "Gemini", note: "Understanding engine" },
-              { icon: Blocks, label: "Connected Apps", note: "MCP, Gmail, GitHub & more" },
-            ].map(({ icon: Icon, label, note }) => (
-              <div key={label} className="rounded-2xl border border-[#d8ead2] bg-white p-4 text-center shadow-sm">
-                <Icon size={16} className="text-[#2d6a4f] mx-auto mb-2" />
-                <p className="text-xs font-bold text-[#1a3a2a]">{label}</p>
-                <p className="text-[11px] text-[#7a9a85] mt-0.5">{note}</p>
-              </div>
-            ))}
-          </motion.div>
-        </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 8 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="mt-12 text-center"
-        >
-          <div className="inline-flex items-center gap-2 bg-[#f0f7f2] text-[#2d6a4f] text-xs font-semibold px-5 py-2.5 rounded-full border border-[#c8ddd0]">
-            Every consequential action runs through a human approval step.
-          </div>
-        </motion.div>
-      </div>
-    </section>
-  );
+  return <section id="architecture" className="bg-[#1a1a1a] px-5 py-32 text-[#e7e7e7] sm:px-8 sm:py-40"><div className="mx-auto max-w-[1200px]"><div className="grid gap-12 lg:grid-cols-[0.7fr_1.3fr] lg:items-start"><motion.div initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}><p className="mb-6 text-[11px] uppercase tracking-[0.18em] text-[#898989]">Architecture</p><h2 className="font-editorial text-5xl leading-[1.05] tracking-[-0.02em] sm:text-6xl">A system that knows when to pause.</h2></motion.div><p className="max-w-[450px] text-lg leading-relaxed text-[#898989] lg:pt-12">CLNCH combines a context store, an agent, connected tools, and an explicit approval step before anything consequential happens.</p></div><div className="mx-auto mt-24 max-w-[780px]"><Node icon={User} label="You" /><div className="flex justify-center py-4 text-[#5e5e5e]">↓</div><Node icon={Bot} label="CLNCH Agent" items={layers} accent /><div className="flex justify-center py-4 text-[#5e5e5e]">↓</div><Node icon={Wrench} label="Tool Registry" items={tools} /><div className="mt-10 grid gap-3 sm:grid-cols-3">{[{ icon: Database, label: "Supabase Memory", note: "Personal context store" }, { icon: Sparkles, label: "Gemini", note: "Understanding engine" }, { icon: Blocks, label: "Connected Apps", note: "MCP, Gmail, GitHub & more" }].map(({ icon: Icon, label, note }) => <div key={label} className="border-t border-white/[0.08] py-5"><Icon size={17} strokeWidth={1.2} className="mb-5 text-[#78bae6]" /><p className="text-sm text-[#cfcfcf]">{label}</p><p className="mt-2 text-xs text-[#898989]">{note}</p></div>)}</div></div><p className="mt-20 text-center text-xs uppercase tracking-[0.16em] text-[#898989]">Every consequential action runs through a human approval step.</p></div></section>;
 }

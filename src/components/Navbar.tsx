@@ -13,6 +13,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
+  const darkHeader = location.pathname === "/" && scrolled;
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 20);
@@ -26,7 +27,7 @@ export default function Navbar() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled || location.pathname !== "/" ? "bg-[#faf9f5]/95 backdrop-blur-md shadow-sm" : "bg-transparent"
+        darkHeader ? "bg-[#222]/90 backdrop-blur-md shadow-sm" : scrolled || location.pathname !== "/" ? "bg-[#e5e4e0]/95 backdrop-blur-md shadow-sm" : "bg-transparent"
       }`}
     >
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
@@ -48,7 +49,7 @@ export default function Navbar() {
               <a
                 key={l.label}
                 href={l.href}
-                className="text-sm text-[#4a6a55] hover:text-[#1a3a2a] transition-colors font-medium cursor-pointer"
+                className={`text-sm transition-colors font-medium cursor-pointer ${darkHeader ? "text-[#cfcfcf] hover:text-white" : "text-[#4a6a55] hover:text-[#1a3a2a]"}`}
               >
                 {l.label}
               </a>
@@ -56,7 +57,7 @@ export default function Navbar() {
               <Link
                 key={l.label}
                 to={l.href}
-                className="text-sm text-[#4a6a55] hover:text-[#1a3a2a] transition-colors font-medium cursor-pointer"
+                className={`text-sm transition-colors font-medium cursor-pointer ${darkHeader ? "text-[#cfcfcf] hover:text-white" : "text-[#4a6a55] hover:text-[#1a3a2a]"}`}
               >
                 {l.label}
               </Link>
@@ -66,13 +67,13 @@ export default function Navbar() {
 
         <a
           href="/#waitlist"
-          className="hidden md:inline-flex items-center px-5 py-2.5 rounded-full bg-[#F47316] text-white text-sm font-semibold hover:bg-[#d9651a] transition-colors cursor-pointer shadow-sm"
+          className="hidden md:inline-flex items-center px-5 py-2.5 rounded-full bg-white text-black text-sm font-semibold hover:opacity-90 transition-opacity cursor-pointer shadow-sm"
         >
           Join Waitlist
         </a>
 
         <button
-          className="md:hidden text-[#1a3a2a] cursor-pointer"
+          className={`md:hidden cursor-pointer ${darkHeader ? "text-white" : "text-[#1a3a2a]"}`}
           onClick={() => setMenuOpen((v) => !v)}
           aria-label="Toggle menu"
         >

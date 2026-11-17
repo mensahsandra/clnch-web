@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion } from "motion/react";
+import { ArrowRight } from "lucide-react";
 import { supabase } from "@/lib/supabase";
 
 export default function FinalCTA() {
@@ -7,104 +8,17 @@ export default function FinalCTA() {
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     if (!email) return;
     setError("");
-
-    const { error: insertError } = supabase
-      ? await supabase.from("waitlist").insert({ email })
-      : { error: { message: "Database not configured" } } as any;
-
-    if (insertError) {
-      if (insertError.code === "23505") {
-        setSubmitted(true);
-        return;
-      }
+    const { error: insertError } = supabase ? await supabase.from("waitlist").insert({ email }) : { error: { message: "Database not configured" } } as any;
+    if (insertError && insertError.code !== "23505") {
       setError("Something went wrong. Please try again.");
       return;
     }
     setSubmitted(true);
   };
 
-  return (
-    <section id="waitlist" className="py-32 px-6 bg-[#faf9f5] relative overflow-hidden">
-      <div className="absolute inset-0 pointer-events-none">
-        <svg width="100%" height="100%" className="opacity-[0.035]">
-          <defs>
-            <pattern id="dots3" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
-              <circle cx="2" cy="2" r="1.5" fill="#2d6a4f" />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#dots3)" />
-        </svg>
-      </div>
-
-      <div className="max-w-3xl mx-auto relative text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-        >
-          {/* Green airplane video */}
-          <div className="flex justify-center mb-8">
-            <div className="rounded-2xl overflow-hidden shadow-xl">
-              <video
-                src="/videos/green-airplane.mp4"
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="w-32 h-auto"
-              />
-            </div>
-          </div>
-
-          <h2 className="text-4xl sm:text-5xl font-extrabold text-[#1a3a2a] leading-tight tracking-tight mb-3">
-            Ready to move through the web differently?
-          </h2>
-          <h2 className="text-4xl sm:text-5xl font-extrabold text-[#2d6a4f] leading-tight tracking-tight mb-6">
-            CLNCH the process.
-          </h2>
-
-          <p className="text-base text-[#4a6a55] mb-2 max-w-md mx-auto leading-relaxed">
-            Join the waitlist for the personal context layer of the web.
-          </p>
-          <p className="text-base text-[#4a6a55] mb-10 max-w-md mx-auto leading-relaxed">
-            Information is everywhere. Context is not.
-          </p>
-
-          {!submitted ? (
-            <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 justify-center max-w-md mx-auto mb-8">
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="your@email.com"
-                required
-                className="flex-1 px-5 py-3 rounded-full border border-[#d8ead2] bg-white text-sm text-[#1a3a2a] placeholder:text-[#aac4b0] focus:outline-none focus:ring-2 focus:ring-[#2d6a4f]/20 shadow-sm"
-              />
-              <button
-                type="submit"
-                className="px-6 py-3 rounded-full bg-[#F47316] text-white font-semibold text-sm hover:bg-[#d9651a] transition-colors cursor-pointer shadow-md shadow-orange-200 whitespace-nowrap"
-              >
-                Join the waitlist
-              </button>
-            </form>
-          ) : (
-            <div className="mb-8 bg-[#e8f5ee] border border-[#c8ddd0] rounded-2xl px-6 py-4 inline-block">
-              <p className="text-sm font-semibold text-[#2d6a4f]">You're on the waitlist!</p>
-              <p className="text-xs text-[#5a8a6a]">We'll reach out when CLNCH is ready for you.</p>
-            </div>
-          )}
-          {error && (
-            <p className="text-sm text-red-600 mb-4">{error}</p>
-          )}
-
-          <p className="mt-10 text-xs text-[#9ab0a0] font-medium tracking-wide">From Found to Filed.</p>
-        </motion.div>
-      </div>
-    </section>
-  );
+  return <section id="waitlist" className="bg-[#1a1a1a] px-5 py-32 text-[#e7e7e7] sm:px-8 sm:py-48"><div className="mx-auto grid max-w-[1200px] gap-16 lg:grid-cols-[1fr_0.7fr] lg:items-center"><motion.div initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}><p className="mb-8 text-[11px] uppercase tracking-[0.18em] text-[#898989]">A new way through</p><h2 className="font-editorial text-[clamp(3.5rem,6.5vw,6.5rem)] leading-[1] tracking-[-0.025em]">Ready to move through the web differently?</h2><p className="mt-8 max-w-[470px] text-lg leading-relaxed text-[#898989]">Join the waitlist for the personal context layer of the web.</p>{!submitted ? <form onSubmit={handleSubmit} className="mt-10 flex max-w-[510px] flex-col gap-3 sm:flex-row"><input type="email" value={email} onChange={(event) => setEmail(event.target.value)} placeholder="your@email.com" required className="h-11 flex-1 rounded-full border border-white/[0.14] bg-[#121212] px-5 text-sm text-white placeholder:text-[#5e5e5e] focus:outline-none focus:ring-2 focus:ring-[#78bae6]/40" /><button type="submit" className="inline-flex h-11 items-center justify-center gap-2 rounded-full bg-white px-6 text-sm text-black transition-opacity hover:opacity-90">Join the waitlist <ArrowRight size={14} /></button></form> : <div className="mt-10 rounded-2xl border border-[#78bae6]/30 bg-[#78bae6]/10 px-6 py-4"><p className="text-sm text-[#e7e7e7]">You’re on the waitlist.</p><p className="mt-1 text-xs text-[#898989]">We’ll reach out when CLNCH is ready for you.</p></div>}{error && <p className="mt-4 text-sm text-[#f06ba8]">{error}</p>}</motion.div><motion.div initial={{ opacity: 0, scale: 0.96 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.12 }} className="relative min-h-[360px] overflow-hidden rounded-3xl border border-white/[0.08] bg-[#121212]"><div className="absolute inset-0 bg-[radial-gradient(circle_at_55%_35%,rgba(120,186,230,0.28),transparent_20%),radial-gradient(circle_at_30%_70%,rgba(240,107,168,0.24),transparent_22%),radial-gradient(circle_at_75%_72%,rgba(250,203,14,0.16),transparent_20%)]" /><svg className="absolute inset-0 h-full w-full" viewBox="0 0 500 420" fill="none" aria-hidden><path d="M130 340V108h210v232M130 108l105-57 105 57M235 51v289M170 340h130" stroke="#e7e7e7" strokeOpacity=".7" /><path d="M235 155l72-38v170l-72 53z" fill="url(#doorGlow)" fillOpacity=".7" stroke="#e7e7e7" strokeOpacity=".7" /><circle cx="284" cy="204" r="4" fill="#fff" /><path d="M70 340h360" stroke="#e7e7e7" strokeOpacity=".45" /><path d="M395 65l4 9 9 4-9 4-4 9-4-9-9-4 9-4z" fill="#fff" fillOpacity=".75" /><defs><linearGradient id="doorGlow" x1="235" y1="120" x2="315" y2="300" gradientUnits="userSpaceOnUse"><stop stopColor="#f06ba8" /><stop offset=".5" stopColor="#7652a8" /><stop offset="1" stopColor="#78bae6" /></linearGradient></defs></svg><p className="absolute bottom-6 left-6 text-[10px] uppercase tracking-[0.16em] text-[#898989]">Open a new way through</p></motion.div></div></section>;
 }

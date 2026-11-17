@@ -1,143 +1,16 @@
 import { motion } from "motion/react";
-import { CheckCircle2, AlertCircle, ArrowRight } from "lucide-react";
-const mascotImage = "/images/ChatGPT_Image_Aug_26,_2026,_05_48_57_AM.png";
+import { AlertCircle, CheckCircle2 } from "lucide-react";
 
-const profileFields = [
-  { label: "Education", value: "BSc Computer Science" },
-  { label: "Experience", value: "1.5 years" },
-  { label: "Skills", value: "Python, React, ML" },
-  { label: "Interests", value: "AI, Climate Tech" },
-  { label: "Goals", value: "Funded MSc in Europe" },
-  { label: "Location", value: "Accra, Ghana" },
-  { label: "Funding needs", value: "Full funding required" },
-  { label: "Career direction", value: "Research & Engineering" },
-];
-
-const matchReasons = [
-  "International applicants accepted",
-  "Master's level",
-  "Relevant field",
-  "Funding available",
-];
+const profileFields = ["Education", "Experience", "Skills", "Interests", "Goals", "Location", "Funding needs", "Career direction"];
+const matchReasons = ["International applicants accepted", "Master’s level", "Relevant field", "Funding available"];
 
 export default function OpportunityProfile() {
   return (
-    <section className="py-24 px-6 bg-[#f0f7f2]">
-      <div className="max-w-6xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 14 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.55, ease: "easeOut" }}
-          className="text-center mb-14"
-        >
-          <p className="text-xs font-semibold tracking-[0.15em] uppercase text-[#7a9a85] mb-4">Opportunity profile</p>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#1a3a2a] leading-tight mb-3">
-            CLNCH knows the opportunity.
-          </h2>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#2d6a4f] leading-tight">
-            You teach it about you.
-          </h2>
-        </motion.div>
-
-        <div className="grid lg:grid-cols-2 gap-8 items-start max-w-4xl mx-auto">
-          {/* Profile card */}
-          <motion.div
-            initial={{ opacity: 0, x: -14 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-          >
-            <div className="bg-white rounded-2xl border border-[#d8ead2] shadow-lg p-5 relative">
-              <span className="absolute -top-2 right-2 text-[8px] font-medium text-[#9ab0a0] bg-[#f7faf8] border border-[#e8f0ea] px-1.5 py-0.5 rounded-full">Concept preview</span>
-              <p className="text-[10px] font-bold uppercase tracking-widest text-[#7a9a85] mb-3">Your Private Profile</p>
-              <div className="grid grid-cols-2 gap-2">
-                {profileFields.map((field) => (
-                  <div key={field.label} className="bg-[#f7faf8] rounded-lg px-2.5 py-2">
-                    <p className="text-[8px] text-[#9ab0a0] font-semibold uppercase tracking-wider mb-0.5">{field.label}</p>
-                    <p className="text-[10px] text-[#1a3a2a] font-medium">{field.value}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Match reasoning card */}
-          <motion.div
-            initial={{ opacity: 0, x: 14 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
-          >
-            <div className="bg-white rounded-2xl border border-[#d8ead2] shadow-lg p-5 relative">
-              <span className="absolute -top-2 right-2 text-[8px] font-medium text-[#9ab0a0] bg-[#f7faf8] border border-[#e8f0ea] px-1.5 py-0.5 rounded-full">Concept preview</span>
-
-              {/* New opportunity appears */}
-              <div className="flex items-center gap-2 mb-3">
-                <div className="w-10 h-10 shrink-0">
-                  <img src={mascotImage} alt="CLNCH companion" className="w-full h-full object-contain" />
-                </div>
-                <div>
-                  <p className="text-xs font-bold text-[#1a3a2a]">UCL MSc Scholarship</p>
-                  <p className="text-[10px] text-[#7a9a85]">A new opportunity appeared</p>
-                </div>
-              </div>
-
-              <p className="text-[10px] text-[#2d6a4f] font-semibold mb-3">"Here's why I think this is relevant to you."</p>
-
-              {/* MATCH */}
-              <div className="flex items-center gap-2 mb-2">
-                <span className="text-[9px] font-bold uppercase tracking-wider text-[#2d6a4f]">Match</span>
-                <span className="bg-[#2d6a4f] text-white text-[10px] font-bold px-2 py-0.5 rounded-full">Strong fit</span>
-              </div>
-
-              {/* WHY */}
-              <p className="text-[9px] font-bold uppercase tracking-wider text-[#7a9a85] mb-1.5">Why</p>
-              <div className="space-y-1 mb-3">
-                {matchReasons.map((r) => (
-                  <div key={r} className="flex items-center gap-1.5">
-                    <CheckCircle2 size={10} className="text-[#2d6a4f] shrink-0" />
-                    <span className="text-[10px] text-[#3a5a45]">{r}</span>
-                  </div>
-                ))}
-              </div>
-
-              {/* CHECK */}
-              <div className="border-t border-[#d8ead2] pt-2.5">
-                <p className="text-[9px] font-bold uppercase tracking-wider text-[#F47316] mb-1.5">Check</p>
-                <div className="flex items-start gap-1.5 mb-3">
-                  <AlertCircle size={10} className="text-[#F47316] shrink-0 mt-0.5" />
-                  <span className="text-[10px] text-[#c85a10]">This opportunity appears to require two years of experience.</span>
-                </div>
-              </div>
-
-              {/* Investigate prompt */}
-              <div className="bg-[#f0f7f2] rounded-lg p-2.5 border border-[#c8ddd0]">
-                <p className="text-[10px] text-[#2d6a4f] font-semibold mb-2">
-                  "Want me to investigate whether there are exceptions?"
-                </p>
-                <div className="flex gap-1.5">
-                  <button className="text-[9px] font-bold bg-[#2d6a4f] text-white px-2.5 py-1.5 rounded-lg flex items-center gap-1 cursor-default">
-                    Investigate <ArrowRight size={8} />
-                  </button>
-                  <button className="text-[9px] font-bold text-[#7a9a85] px-2.5 py-1.5 rounded-lg border border-[#e8f0ea] hover:bg-white cursor-default">
-                    Not now
-                  </button>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-
-        <motion.p
-          initial={{ opacity: 0, y: 8 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="text-center mt-10 text-sm text-[#7a9a85] max-w-lg mx-auto leading-relaxed"
-        >
-          The goal is not an impressive AI score. The goal is a better decision.
-        </motion.p>
+    <section className="bg-[#121212] px-5 py-32 text-[#e7e7e7] sm:px-8 sm:py-40">
+      <div className="mx-auto max-w-[1200px]">
+        <div className="grid gap-12 lg:grid-cols-[0.75fr_1.25fr] lg:items-start"><motion.div initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}><p className="mb-6 text-[11px] uppercase tracking-[0.18em] text-[#898989]">Opportunity profile</p><h2 className="font-editorial text-5xl leading-[1.05] tracking-[-0.02em] sm:text-6xl">The opportunity knows what it needs. You teach it about you.</h2></motion.div><motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.12 }} className="max-w-[450px] text-lg leading-relaxed text-[#898989] lg:pt-12">A useful match is not a score. It is a reasoned connection between what is being asked and what you are trying to do.</motion.p></div>
+        <div className="mt-24 grid gap-5 lg:grid-cols-2"><motion.div initial={{ opacity: 0, x: -18 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }} className="rounded-2xl border border-white/[0.08] bg-[#1a1a1a] p-6 sm:p-8"><p className="mb-6 text-[11px] uppercase tracking-[0.16em] text-[#898989]">Your private profile</p><div className="grid grid-cols-2 gap-x-6">{profileFields.map((field, i) => <div key={field} className="border-t border-white/[0.07] py-4"><p className="text-[10px] uppercase tracking-[0.12em] text-[#5e5e5e]">{field}</p><p className="mt-2 text-sm text-[#cfcfcf]">{["BSc Computer Science", "1.5 years", "Python, React, ML", "AI, Climate Tech", "Funded MSc in Europe", "Accra, Ghana", "Full funding required", "Research & Engineering"][i]}</p></div>)}</div></motion.div><motion.div initial={{ opacity: 0, x: 18 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.12 }} className="rounded-2xl border border-white/[0.08] bg-[#1a1a1a] p-6 sm:p-8"><div className="flex items-start justify-between border-b border-white/[0.07] pb-6"><div><p className="text-lg text-[#e7e7e7]">UCL MSc Scholarship</p><p className="mt-2 text-xs text-[#898989]">A new opportunity appeared</p></div><span className="rounded-full border border-[#78bae6]/30 bg-[#78bae6]/10 px-3 py-1 text-[10px] uppercase tracking-[0.12em] text-[#78bae6]">Strong fit</span></div><p className="mt-7 text-sm text-[#cfcfcf]">Here’s why I think this is relevant to you.</p><p className="mt-8 text-[10px] uppercase tracking-[0.16em] text-[#898989]">Why</p><div className="mt-3 space-y-3">{matchReasons.map((reason) => <div key={reason} className="flex items-center gap-3 text-sm text-[#a0a0a0]"><CheckCircle2 size={14} className="text-[#78bae6]" strokeWidth={1.3} />{reason}</div>)}</div><div className="mt-8 border-t border-white/[0.07] pt-6"><p className="flex items-start gap-3 text-sm text-[#cfcfcf]"><AlertCircle size={15} className="mt-0.5 shrink-0 text-[#f06ba8]" />This opportunity appears to require two years of experience.</p><button className="mt-7 rounded-full bg-white px-5 py-2.5 text-xs text-black">Investigate the exception</button></div></motion.div></div>
+        <p className="mt-8 text-center text-xs text-[#5e5e5e]">The goal is not an impressive AI score. The goal is a better decision.</p>
       </div>
     </section>
   );

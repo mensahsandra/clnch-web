@@ -1,132 +1,26 @@
 import { motion } from "motion/react";
-const mascotImage = "/images/ChatGPT_Image_Aug_26,_2026,_05_48_57_AM.png";
+import { ArrowUpRight } from "lucide-react";
+
+const lines = ["Eligibility", "Funding", "Deadline", "What you need", "What matters"];
 
 export default function ClnchLens() {
   return (
-    <section id="clnch-lens" className="py-24 px-6 bg-[#f0f7f2]">
-      <div className="max-w-6xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 14 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.55, ease: "easeOut" }}
-          className="text-center mb-14"
-        >
-          <div className="inline-flex items-center gap-2 bg-[#2d6a4f]/10 text-[#2d6a4f] text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-full mb-5">
-            CLNCH Lens
-          </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#1a3a2a] leading-tight mb-3">
-            The web is built for pages.
-          </h2>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#2d6a4f] leading-tight">
-            CLNCH is built for people.
-          </h2>
+    <section id="clnch-lens" className="bg-[#121212] px-5 py-32 text-[#e7e7e7] sm:px-8 sm:py-40">
+      <div className="mx-auto max-w-[1200px]">
+        <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }} className="mx-auto max-w-[650px] text-center">
+          <p className="mb-6 text-[11px] uppercase tracking-[0.18em] text-[#898989]">CLNCH Lens</p>
+          <h2 className="font-editorial text-[clamp(3rem,6vw,5.5rem)] leading-[1.05] tracking-[-0.025em]">The web is built for pages.<span className="block text-[#898989]">CLNCH is built for people.</span></h2>
+          <p className="mt-7 text-base leading-relaxed text-[#898989]">A layer beside the page that helps you ask better questions without losing the thing you were trying to do.</p>
         </motion.div>
 
-        {/* Browser + sidebar mockup */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
-          className="max-w-4xl mx-auto"
-        >
-          <div className="bg-white rounded-2xl border border-[#d8ead2] shadow-xl overflow-hidden relative">
-            <span className="absolute top-2 right-2 z-20 text-[8px] font-medium text-[#9ab0a0] bg-[#f7faf8] border border-[#e8f0ea] px-1.5 py-0.5 rounded-full">Concept preview</span>
-
-            {/* Browser bar */}
-            <div className="flex items-center gap-1.5 px-4 py-3 bg-[#f7faf8] border-b border-[#e8f0ea]">
-              <div className="w-2.5 h-2.5 rounded-full bg-[#e8e4d8]" />
-              <div className="w-2.5 h-2.5 rounded-full bg-[#e8e4d8]" />
-              <div className="w-2.5 h-2.5 rounded-full bg-[#e8e4d8]" />
-              <div className="ml-2 bg-[#edf4f0] rounded px-3 py-1 text-[10px] text-[#9ab0a0] flex-1 max-w-md">
-                university.ac.uk/scholarships/eligibility
-              </div>
-            </div>
-
-            <div className="flex">
-              {/* Webpage content */}
-              <div className="flex-1 p-5 sm:p-6 border-r border-[#e8f0ea]">
-                <div className="h-3 bg-[#1a3a2a]/70 rounded w-2/3 mb-3" />
-                <div className="h-2 bg-[#c8ddd0] rounded w-1/3 mb-4" />
-                <div className="space-y-1.5 mb-4">
-                  <div className="h-1.5 bg-[#e8e4d8] rounded w-full" />
-                  <div className="h-1.5 bg-[#e8e4d8] rounded w-5/6" />
-                  <div className="h-1.5 bg-[#e8e4d8] rounded w-full" />
-                  <div className="h-1.5 bg-[#e8e4d8] rounded w-4/5" />
-                  <div className="h-1.5 bg-[#e8e4d8] rounded w-3/4" />
-                </div>
-                <div className="h-2.5 bg-[#c8ddd0] rounded w-1/2 mb-3" />
-                <div className="space-y-1.5 mb-4">
-                  <div className="h-1.5 bg-[#e8e4d8] rounded w-full" />
-                  <div className="h-1.5 bg-[#e8e4d8] rounded w-2/3" />
-                  <div className="h-1.5 bg-[#e8e4d8] rounded w-5/6" />
-                </div>
-                <div className="h-2.5 bg-[#c8ddd0] rounded w-2/5 mb-3" />
-                <div className="space-y-1.5">
-                  <div className="h-1.5 bg-[#e8e4d8] rounded w-full" />
-                  <div className="h-1.5 bg-[#e8e4d8] rounded w-3/4" />
-                </div>
-              </div>
-
-              {/* CLNCH sidebar */}
-              <div className="w-full sm:w-64 bg-[#f7faf8] p-4 flex flex-col">
-                <div className="flex items-center gap-2 mb-4">
-                  <div className="w-10 h-10 shrink-0">
-                    <img src={mascotImage} alt="CLNCH companion" className="w-full h-full object-contain" />
-                  </div>
-                  <div>
-                    <p className="text-[10px] font-bold text-[#1a3a2a]">CLNCH</p>
-                    <p className="text-[8px] text-[#7a9a85]">Reading this page</p>
-                  </div>
-                </div>
-
-                {/* User question */}
-                <div className="flex gap-2 mb-3">
-                  <div className="w-5 h-5 rounded-full bg-[#2d6a4f] shrink-0 flex items-center justify-center">
-                    <span className="text-white text-[7px] font-bold">You</span>
-                  </div>
-                  <p className="text-[10px] text-[#1a3a2a] bg-[#e8f5ee] rounded-lg px-2.5 py-1.5 leading-snug">
-                    "What does this mean?"
-                  </p>
-                </div>
-
-                {/* CLNCH response */}
-                <div className="flex gap-2 mb-3">
-                  <div className="w-5 h-5 rounded-full bg-[#7BC67B] shrink-0 flex items-center justify-center">
-                    <span className="text-white text-[7px] font-bold">K</span>
-                  </div>
-                  <div className="bg-white rounded-lg px-2.5 py-2 border border-[#e8f0ea] flex-1">
-                    <p className="text-[10px] text-[#4a6a55] leading-relaxed">
-                      In simple terms, they are saying you need a bachelor's degree equivalent to a UK 2:1.
-                    </p>
-                    <p className="text-[10px] text-[#4a6a55] leading-relaxed mt-1.5">
-                      Your KNUST degree appears relevant, but this page doesn't specify whether your exact classification qualifies.
-                    </p>
-                    <p className="text-[10px] text-[#2d6a4f] font-semibold leading-relaxed mt-1.5">
-                      Want me to look for their international equivalency requirement?
-                    </p>
-                  </div>
-                </div>
-
-                {/* Buttons */}
-                <div className="flex gap-1.5 mt-auto">
-                  <button className="text-[9px] font-bold bg-[#2d6a4f] text-white px-2.5 py-1.5 rounded-lg cursor-default">
-                    Look for it
-                  </button>
-                  <button className="text-[9px] font-bold text-[#7a9a85] px-2.5 py-1.5 rounded-lg border border-[#e8f0ea] hover:bg-white cursor-default">
-                    Not now
-                  </button>
-                </div>
-              </div>
-            </div>
+        <motion.div initial={{ opacity: 0, y: 22 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-60px" }} transition={{ duration: 0.8, delay: 0.15 }} className="relative mt-20 overflow-hidden rounded-2xl border border-white/[0.08] bg-[#1a1a1a] shadow-[0_25px_50px_-12px_rgba(0,0,0,0.4)]">
+          <div className="flex items-center gap-2 border-b border-white/[0.06] px-5 py-4"><span className="h-2 w-2 rounded-full bg-[#7652a8]" /><span className="h-2 w-2 rounded-full bg-[#78bae6]" /><span className="h-2 w-2 rounded-full bg-[#5e5e5e]" /><div className="ml-4 max-w-[460px] flex-1 rounded-full bg-[#121212] px-4 py-2 font-mono text-[10px] text-[#5e5e5e]">university.ac.uk/scholarships/eligibility</div><span className="text-[10px] uppercase tracking-[0.12em] text-[#5e5e5e]">Concept preview</span></div>
+          <div className="grid min-h-[430px] md:grid-cols-[1fr_330px]">
+            <div className="border-r border-white/[0.06] p-8 sm:p-12"><div className="mb-12 h-5 w-2/3 bg-white/80" /><div className="mb-5 h-2 w-1/3 bg-white/20" /><div className="space-y-3">{Array.from({ length: 10 }, (_, i) => <div key={i} className="h-2 rounded-full bg-white/[0.08]" style={{ width: `${100 - (i % 4) * 9}%` }} />)}</div><div className="mt-12 h-3 w-1/2 bg-white/20" /><div className="mt-4 space-y-3">{Array.from({ length: 5 }, (_, i) => <div key={i} className="h-2 rounded-full bg-white/[0.08]" style={{ width: `${85 - i * 8}%` }} />)}</div></div>
+            <div className="bg-[#222] p-6 sm:p-8"><div className="flex items-center justify-between border-b border-white/[0.08] pb-5"><div><p className="text-sm text-white">CLNCH</p><p className="mt-1 text-[10px] text-[#898989]">Reading this page</p></div><span className="h-8 w-8 rounded-full bg-gradient-to-br from-[#78bae6] via-[#7652a8] to-[#f06ba8]" /></div><div className="mt-7 space-y-5"><p className="ml-auto w-fit rounded-xl bg-white/[0.08] px-3 py-2 text-xs text-[#cfcfcf]">What does this mean?</p><div className="rounded-xl border border-white/[0.07] bg-[#1a1a1a] p-4"><p className="text-xs leading-relaxed text-[#cfcfcf]">In simple terms, they are asking for a degree equivalent to a UK 2:1.</p><p className="mt-3 text-xs leading-relaxed text-[#898989]">Your degree appears relevant, but the exact classification is unclear.</p><p className="mt-4 text-xs text-[#78bae6]">Want me to look for the international requirement?</p></div></div><div className="mt-8 flex gap-2"><button className="rounded-full bg-white px-4 py-2 text-[11px] text-black">Look for it</button><button className="rounded-full border border-white/15 px-4 py-2 text-[11px] text-[#a0a0a0]">Not now</button></div></div>
           </div>
-
-          {/* Caption */}
-          <p className="text-center mt-4 text-xs text-[#9ab0a0] italic">
-            CLNCH understands the page you're looking at. You don't need to leave and open another tool.
-          </p>
         </motion.div>
+        <div className="mt-5 flex items-center justify-between text-xs text-[#5e5e5e]"><span>Understand the page without leaving it.</span><a href="#insight" className="inline-flex items-center gap-2 hover:text-white">Read the idea <ArrowUpRight size={13} /></a></div>
       </div>
     </section>
   );
